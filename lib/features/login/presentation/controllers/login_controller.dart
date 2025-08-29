@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:reparaai/domain/entities/login_entity.dart';
-import 'package:reparaai/domain/usecases/login_usecase.dart';
+import 'package:reparaai/features/login/domain/entities/login_entity.dart';
+import 'package:reparaai/features/login/domain/usecases/login_usecase.dart';
 
 part 'login_controller.g.dart';
 

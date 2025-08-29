@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:reparaai/presentation/pages/login/login_page.dart';
+import 'package:reparaai/features/login/presentation/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());

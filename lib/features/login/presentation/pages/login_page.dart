@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reparaai/presentation/controllers/login/login_controller.dart';
-import 'package:reparaai/presentation/widgets/shared/button_field.dart';
-import 'package:reparaai/presentation/widgets/login/login_button_field.dart';
+import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
+import 'package:reparaai/core/presentation/widgets/button_field.dart';
+import 'package:reparaai/features/login/presentation/widgets/login_button_field.dart';
 
 class LoginPage extends StatefulWidget {
   final LoginController controller;
