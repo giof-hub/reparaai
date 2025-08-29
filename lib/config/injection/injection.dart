@@ -1,7 +1,7 @@
 import 'package:reparaai/config/injection/base_injection.dart';
-import 'package:reparaai/domain/usecases/impl/login_usecase_impl.dart';
-import 'package:reparaai/domain/usecases/login_usecase.dart';
-import 'package:reparaai/presentation/controllers/login_controller.dart';
+import 'package:reparaai/features/login/domain/usecases/impl/login_usecase_impl.dart';
+import 'package:reparaai/features/login/domain/usecases/login_usecase.dart';
+import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
 
 class Injection extends BaseInjection {
   @override
