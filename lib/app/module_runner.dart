@@ -12,10 +12,9 @@ class ModuleRunner {
     ThemeData? theme,
     ThemeData? themeDark,
     String initialRoute = '/',
-    dynamic initArgs
+    dynamic initArgs,
   }) async {
     await runZonedGuarded(() async {
-
       await _createInitialConfig(injection: inject);
 
       runApp(
@@ -23,12 +22,9 @@ class ModuleRunner {
           externalModules: modules,
           initialRoute: initialRoute,
           initArgs: initArgs,
-        )
+        ),
       );
-    }, 
-    (error, stackTrace) {
-
-    });
+    }, (error, stackTrace) {});
   }
 
   static Future<void> _createInitialConfig({Injection? injection}) async {
