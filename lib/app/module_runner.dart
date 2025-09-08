@@ -11,7 +11,7 @@ class ModuleRunner {
     Injection? inject,
     ThemeData? theme,
     ThemeData? themeDark,
-    String initialRoute = '/',
+    String initialRoute = 'reparaai/home/home',
     dynamic initArgs,
   }) async {
     await runZonedGuarded(() async {

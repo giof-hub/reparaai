@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
 
 class HomePage extends StatefulWidget {
+
+  static const String nameRoute = "home";
+
   const HomePage({super.key});
 
   @override

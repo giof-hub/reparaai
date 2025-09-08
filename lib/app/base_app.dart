@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:reparaai/core/data/models/app_module.dart';
+import 'package:reparaai/core/extensions/map_extensions.dart';
 
 abstract mixin class BaseApp {
   List<AppModule> get modules;
@@ -23,6 +24,12 @@ abstract mixin class BaseApp {
   Route<dynamic>? routeGenerator(RouteSettings config, {dynamic initArgs}) {
     var routeName = config.name;
     dynamic routeArgs;
+
+    Map<String, String> map = {"teste": "testeeeee"};
+
+    print(map["teste"]);
+
+    var route = routes.getValueOrDefault(key: routeName, def: "");
 
     var navigateTo = routes[routeName];
     if (navigateTo == null) return null;

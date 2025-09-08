@@ -19,6 +19,7 @@ class CoreAppWidget extends StatefulWidget {
     this.widget
   });
 
+  @override
   CoreAppWidgetState createState() => CoreAppWidgetState();
 }
 
@@ -50,6 +51,6 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
   Map<String, widgetBuilderArgs> get baseRoutes => {};
 
   @override
-  List<AppModule> get modules => widget.externalModules!;
+  List<AppModule> get modules => widget.externalModules ?? []; 
 
 }
