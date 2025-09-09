@@ -25,11 +25,7 @@ abstract mixin class BaseApp {
     var routeName = config.name;
     dynamic routeArgs;
 
-    Map<String, String> map = {"teste": "testeeeee"};
-
-    print(map["teste"]);
-
-    var route = routes.getValueOrDefault(key: routeName, def: "");
+    // var route = routes.getValueOrDefault(key: routeName, def: "");
 
     var navigateTo = routes[routeName];
     if (navigateTo == null) return null;

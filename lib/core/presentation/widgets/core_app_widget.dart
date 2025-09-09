@@ -3,7 +3,6 @@ import 'package:reparaai/app/base_app.dart';
 import 'package:reparaai/core/data/models/app_module.dart';
 
 class CoreAppWidget extends StatefulWidget {
-
   final String initialRoute;
   final dynamic initArgs;
   final TransitionBuilder? builder;
@@ -16,7 +15,7 @@ class CoreAppWidget extends StatefulWidget {
     this.initArgs,
     this.externalModules,
     this.builder,
-    this.widget
+    this.widget,
   });
 
   @override
@@ -24,9 +23,8 @@ class CoreAppWidget extends StatefulWidget {
 }
 
 class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
-
   @override
-  void initState () {
+  void initState() {
     super.initState();
     _startRoutesConfiguration();
   }
@@ -34,7 +32,7 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
   void _startRoutesConfiguration() {
     super.registerRoutes();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,8 +40,15 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
       debugShowCheckedModeBanner: false,
       title: "ReparaAi",
       home: widget.widget,
-      onGenerateRoute: (settings) => super.routeGenerator(settings, initArgs: widget.initArgs),
-      initialRoute: widget.initialRoute
+      onGenerateRoute: (settings) =>
+          super.routeGenerator(settings, initArgs: widget.initArgs),
+      initialRoute: widget.initialRoute,
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: const Color.fromARGB(255, 32, 95, 168),
+          foregroundColor: Colors.white,
+        ),
+      ),
     );
   }
 
@@ -51,6 +56,5 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
   Map<String, widgetBuilderArgs> get baseRoutes => {};
 
   @override
-  List<AppModule> get modules => widget.externalModules ?? []; 
-
+  List<AppModule> get modules => widget.externalModules ?? [];
 }

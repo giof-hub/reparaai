@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
 
 class SignupPage extends StatefulWidget {
@@ -9,10 +10,13 @@ class SignupPage extends StatefulWidget {
   const SignupPage({required this.controller});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  _SignupPageState createState() => _SignupPageState(controller);
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SignupPageState extends BasePageState<SignupPage, SignupController> {
+  
+  _SignupPageState(super.controller);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox.shrink();
