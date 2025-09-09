@@ -1,7 +1,7 @@
 import 'package:reparaai/core/exceptions/untreated_error_exception.dart';
 
 abstract class ResponseApp<E, T> {
-  bool isSucess();
+  bool isSuccess();
 
   E? getError();
 

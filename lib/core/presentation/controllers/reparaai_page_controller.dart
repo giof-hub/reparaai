@@ -36,16 +36,7 @@ abstract class _ReparaaiPageControllerBase extends BaseController with Store {
   Color? corFundoLoading = Colors.white54;
 
   Future<ResponseApp> fetchObserver(
-    Future<ResponseApp> future, {
-    bool isAnimacaoFimJornada = false,
-    Widget? loading,
-    AlignmentGeometry? alignmentLoading,
-    double? transparenciaLoading,
-  }) async {
-    this.isAnimacaoFimJornada = isAnimacaoFimJornada;
-    widgetLoading = loading;
-    this.alignmentLoading = alignmentLoading;
-    this.transparenciaLoading = transparenciaLoading;
+    Future<ResponseApp> future) async {
     responseFuture = ObservableFuture(future);
     return await responseFuture!;
   }
@@ -71,7 +62,7 @@ abstract class _ReparaaiPageControllerBase extends BaseController with Store {
     ConfigHelp.navegador.currentState?.pushReplacementNamed(nomeRota);
   }
 
-  Future<void> acaoMenu({
+  Future<void> menuAction({
     required String path,
     required String nome,
     bool? menuSeguro = false,
@@ -91,8 +82,7 @@ abstract class _ReparaaiPageControllerBase extends BaseController with Store {
       ),
     );
     responseMenu.process(
-      error: (exception) => showMensagemException(exception: exception),
-      // ignore: avoid_print
+      error: (exception) => print(exception.toString()),
       result: (result) => print("ReparaaiPageController Navegando menu $result"),
     );
   }
