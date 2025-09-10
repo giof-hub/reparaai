@@ -16,6 +16,8 @@ abstract class _SignupController extends ReparaaiPageController with Store {
   SignupEntity signup = SignupEntity.empty();
 
   void signin() {
+    menuAction(path: "reparaai://module_flutter?route=reparaai/signup/signup", nome: "Sign Up");
+
     _useCase.signup(signup);
   }
 }

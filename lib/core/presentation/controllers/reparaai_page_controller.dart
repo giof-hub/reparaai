@@ -83,7 +83,7 @@ abstract class _ReparaaiPageControllerBase extends BaseController with Store {
     );
     responseMenu.process(
       error: (exception) => print(exception.toString()),
-      result: (result) => print("ReparaaiPageController Navegando menu $result"),
+      result: (result) => print("ReparaaiPageController $result"),
     );
   }
 }
