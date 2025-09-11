@@ -9,6 +9,7 @@ import 'package:reparaai/core/extensions/map_extensions.dart';
 import 'package:reparaai/core/data/models/response_app.dart';
 
 class MenuUsecaseImpl implements MenuUseCase {
+
   @override
   Future<ResponseApp<Exception, bool>> navigate({
     ItemMenuNavigationEntity? menuNavigation,
@@ -17,7 +18,9 @@ class MenuUsecaseImpl implements MenuUseCase {
     Object? argsPageFlutter,
   }) async {
     if (menuNavigation == null || menuNavigation.urlMenu.isEmpty) {
-      return ResponseEntity.error(error: Exception("Could not find this navigation menu"));
+      return ResponseEntity.error(
+        error: Exception("Could not find this navigation menu"),
+      );
     }
 
     var context = ConfigHelp.navegador.currentState?.context;
@@ -69,7 +72,6 @@ class MenuUsecaseImpl implements MenuUseCase {
     Duration? duration,
     bool isCloseFlutter,
   ) async {
-
     if (menuNavigation.urlMenu.contains("argsPageFlutter")) {
       Uri uriUrlMenu = Uri.parse(menuNavigation.urlMenu.trim());
       argsPageFlutter = jsonDecode(
@@ -90,8 +92,10 @@ class MenuUsecaseImpl implements MenuUseCase {
     ItemMenuNavigationEntity menuNavigation, {
     Object? argsPageFlutter,
   }) async {
-
-    ConfigHelp.navegador.currentState?.pushNamed(menuNavigation.getPathFlutter()!, arguments: argsPageFlutter);
+    ConfigHelp.navegador.currentState?.pushNamed(
+      menuNavigation.getPathFlutter()!,
+      arguments: argsPageFlutter,
+    );
 
     return ResponseEntity.success(result: true);
   }

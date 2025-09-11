@@ -1,6 +1,10 @@
 import 'package:reparaai/config/injection/base_injection.dart';
+import 'package:reparaai/core/data/repositories_impl/auth_repository_impl.dart';
 import 'package:reparaai/core/data/repositories_impl/jwt_repository_impl.dart';
+import 'package:reparaai/core/domain/repositories/auth_repository.dart';
 import 'package:reparaai/core/domain/repositories/jwt_repository.dart';
+import 'package:reparaai/core/domain/usecases/auth_usecase.dart';
+import 'package:reparaai/core/domain/usecases/impl/auth_usecase_impl.dart';
 import 'package:reparaai/core/domain/usecases/impl/menu_usecase_impl.dart';
 import 'package:reparaai/core/domain/usecases/menu_usecase.dart';
 import 'package:reparaai/features/login/domain/usecases/impl/login_usecase_impl.dart';
@@ -26,6 +30,7 @@ class Injection extends BaseInjection {
   @override
   void registerRepositories() {
     register<JwtRepository>(() => JwtRepositoryImpl());
+    register<AuthRepository>(() => AuthRepositoryImpl(getIt()));
   }
 
   @override
@@ -35,6 +40,7 @@ class Injection extends BaseInjection {
   void registerUseCases() {
     register<LoginUsecase>(() => LoginUsecaseImpl());
     register<SignupUsecase>(() => SignupUsecaseImpl());
+    register<AuthUsecase>(() => AuthUsecaseImpl(getIt()));
     register<MenuUseCase>(() => MenuUsecaseImpl());
   }
 }
