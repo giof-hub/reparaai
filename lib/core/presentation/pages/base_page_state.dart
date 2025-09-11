@@ -20,7 +20,7 @@ abstract class BasePageState<
 
       var isAuthenticated = await authUsecase.isAuthenticated();
 
-      if (!isAuthenticated) {
+      if (!isAuthenticated) { 
 
       }
     }
