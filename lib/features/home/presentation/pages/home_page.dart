@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:reparaai/core/presentation/pages/base_page_state.dart';
+import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
+import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
+import 'package:reparaai/features/home/presentation/widgets/navigator_bar.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class HomePage extends StatefulWidget {
-
   static const String nameRoute = "home";
 
-  const HomePage({super.key});
+  final HomeController controller;
+
+  const HomePage(this.controller, {super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState(controller);
 }
 
-class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+class _HomePageState extends BasePageState<HomePage, HomeController> {
   final TextEditingController _searchController = TextEditingController();
+
+  _HomePageState(super.controller);
 
   @override
   void dispose() {
@@ -66,29 +73,20 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: CardButton(action: () => controller.signUp()),
+                ),
               ],
             ),
           ),
         ),
       ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+      bottomNavigationBar: Observer(
+        builder: (context) {
+          return NavigatorBar(widget.controller);
         },
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        selectedItemColor: Colors.grey,
-        unselectedItemColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
-          BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Buscar'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chats'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
-        ],
       ),
     );
   }

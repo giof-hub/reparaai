@@ -1,4 +1,7 @@
 import 'package:reparaai/config/injection/base_injection.dart';
+import 'package:reparaai/core/domain/usecases/impl/menu_usecase_impl.dart';
+import 'package:reparaai/core/domain/usecases/menu_usecase.dart';
+import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/login/domain/usecases/impl/login_usecase_impl.dart';
 import 'package:reparaai/features/login/domain/usecases/login_usecase.dart';
 import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
@@ -11,6 +14,7 @@ class Injection extends BaseInjection {
   void registerControllers() {
     register<LoginController>(() => LoginController(getIt()));
     register<SignupController>(() => SignupController(getIt()));
+    register<HomeController>(() => HomeController());
   }
 
   @override
@@ -29,5 +33,6 @@ class Injection extends BaseInjection {
   void registerUseCases() {
     register<LoginUsecase>(() => LoginUsecaseImpl());
     register<SignupUsecase>(() => SignupUsecaseImpl());
+    register<MenuUseCase>(() => MenuUsecaseImpl());
   }
 }

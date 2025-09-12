@@ -1,11 +1,12 @@
-import 'dart:ui';
-
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reparaai/config/injection/injection.dart';
 import 'package:reparaai/config/routes.dart';
 import 'package:reparaai/core/data/models/app_module.dart';
+import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/home/presentation/pages/home_page.dart';
+import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
+import 'package:reparaai/features/login/presentation/pages/login_page.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
 import 'package:reparaai/features/signup/presentation/pages/signup_page.dart';
 
@@ -34,9 +35,12 @@ class Resolver implements AppModule {
 
   @override
   Map<String, widgetBuilderArgs> get routesNavigation => {
-    Routes.HOME.getPath(): (context, args) => HomePage(),
+    Routes.HOME.getPath(): (context, args) =>
+        HomePage(GetIt.I.get<HomeController>()),
     Routes.SIGNUP.getPath(): (context, args) =>
         SignupPage(controller: GetIt.I.get<SignupController>()),
+    Routes.LOGIN.getPath(): (context, args) =>
+        LoginPage(controller: GetIt.I.get<LoginController>()),
   };
 
   @override
