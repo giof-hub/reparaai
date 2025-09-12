@@ -15,17 +15,23 @@ abstract class BasePageState<
 
   @override
   void initState() {
+    super.initState();
+
+    validateNeedGuardianAct();
+  }
+
+  void validateNeedGuardianAct() async {
     if (hasAuthenticate) {
       AuthUsecase authUsecase = GetIt.I.get<AuthUsecase>();
 
       var isAuthenticated = await authUsecase.isAuthenticated();
 
-      if (!isAuthenticated) { 
-
+      if (!isAuthenticated) {
+        controller.menuAction(
+          path: "reparaai://module_flutter?reparaai/login/login",
+          nome: 'Login',
+        );
       }
     }
-
-
-    super.initState();
   }
 }
