@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:reparaai/core/presentation/pages/base_page_state.dart';
+import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
 
 class HomePage extends StatefulWidget {
-
   static const String nameRoute = "home";
 
-  const HomePage({super.key});
+  final HomeController controller;
+
+  const HomePage({super.key, required this.controller});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState(controller, true);
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends BasePageState<HomePage, HomeController> {
   int _currentIndex = 0;
   final TextEditingController _searchController = TextEditingController();
+
+  _HomePageState(super.controller, super.hasAuthenticate);
 
   @override
   void dispose() {

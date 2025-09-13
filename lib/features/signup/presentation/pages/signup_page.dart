@@ -7,15 +7,15 @@ class SignupPage extends StatefulWidget {
 
   final SignupController controller;
 
-  const SignupPage({required this.controller});
+  const SignupPage({super.key, required this.controller});
 
   @override
-  _SignupPageState createState() => _SignupPageState(controller);
+  _SignupPageState createState() => _SignupPageState(controller, true);
 }
 
 class _SignupPageState extends BasePageState<SignupPage, SignupController> {
   
-  _SignupPageState(super.controller);
+  _SignupPageState(super.controller, super.hasAuthenticate);
 
   @override
   Widget build(BuildContext context) {

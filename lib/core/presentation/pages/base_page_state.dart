@@ -28,7 +28,7 @@ abstract class BasePageState<
 
       if (!isAuthenticated) {
         controller.menuAction(
-          path: "reparaai://module_flutter?reparaai/login/login",
+          path: "reparaai://module_flutter?route=reparaai/login/login",
           nome: 'Login',
         );
       }

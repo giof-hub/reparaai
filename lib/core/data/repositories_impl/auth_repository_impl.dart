@@ -10,6 +10,6 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<bool> isAuthenticated() async {
     var token = await jwtRepository.getToken('token');
 
-    return jwtRepository.isValidToken(token!);
+    return jwtRepository.isValidToken(token ?? "");
   }
 }
