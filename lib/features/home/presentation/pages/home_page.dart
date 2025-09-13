@@ -83,38 +83,58 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                   padding: const EdgeInsets.all(10),
                   child: CardButton(action: () => controller.signUp()),
                 ),
-                SizedBox(
-                  height: 160,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: repairs.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 140,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            image: NetworkImage(repairs[index]['image']!),
-                            fit: BoxFit.cover,
-                          ),
+
+                Padding(
+                  padding: const EdgeInsets.only(right: 15, left: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Reformas e Reparos',
+                        style: TextStyle(
+                          fontSize: 18
                         ),
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            color: Colors.black54,
-                            padding: EdgeInsets.all(8),
-                            child: Text(
-                              repairs[index]['title']!,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                      ),
+                      Text('Ver todos', style: TextStyle(color: Colors.blue)),
+                    ],
+                  ),
+                ),
+                Padding(padding: EdgeInsetsGeometry.only(top: 10)),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    height: 160,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: repairs.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          width: 140,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            image: DecorationImage(
+                              image: Image.asset(repairs[index]['image']!).image,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              color: Colors.black54,
+                              padding: EdgeInsets.all(8),
+                              child: Text(
+                                repairs[index]['title']!,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (_, __) => SizedBox(width: 12),
+                        );
+                      },
+                      separatorBuilder: (_, __) => SizedBox(width: 12),
+                    ),
                   ),
                 ),
               ],
