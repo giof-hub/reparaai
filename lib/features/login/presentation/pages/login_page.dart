@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
 import 'package:reparaai/core/presentation/widgets/button_field.dart';
 import 'package:reparaai/features/login/presentation/widgets/login_button_field.dart';
 
 class LoginPage extends StatefulWidget {
+  static const String nameRoute = "login";
   final LoginController controller;
 
-  const LoginPage(this.controller);
+  const LoginPage({required this.controller, super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState(controller);
 }
 
-class _LoginPageState extends State<LoginPage> {
-  void _acessar() {
-    // ignore: avoid_print
-    print('Clicou em Acessar');
-  }
-
-  void _criarConta() {
-    Navigator.pushNamed(context, '/cadastro');
-  }
+class _LoginPageState extends BasePageState<LoginPage, LoginController> {
+  
+  _LoginPageState(super.controller);
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +53,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 30),
-                      ButtonField(onPressed: _acessar, text: 'Acessar'),
+                      ButtonField(onPressed: () => controller.signin(), text: 'Acessar'),
                       const SizedBox(height: 10),
                       ButtonField(
-                        onPressed: _criarConta,
+                        onPressed: () => controller.signup(),
                         text: 'Criar minha conta',
                       ),
                     ],

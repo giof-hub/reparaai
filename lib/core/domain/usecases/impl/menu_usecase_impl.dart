@@ -92,6 +92,7 @@ class MenuUsecaseImpl implements MenuUseCase {
     ItemMenuNavigationEntity menuNavigation, {
     Object? argsPageFlutter,
   }) async {
+
     ConfigHelp.navegador.currentState?.pushNamed(
       menuNavigation.getPathFlutter()!,
       arguments: argsPageFlutter,

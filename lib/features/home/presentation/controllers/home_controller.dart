@@ -8,4 +8,17 @@ class HomeController = _HomeController with _$HomeController;
 abstract class _HomeController extends ReparaaiPageController with Store {
 
   _HomeController();
+
+  @observable
+  int? currentIndex;
+
+  @action
+  void setCurrentIndex(int currentIndex) {
+    this.currentIndex = currentIndex;
+  }
+
+  @action
+  void signUp() {
+    menuAction(path: "reparaai://module_flutter?route=reparaai/login/login", nome: "login");
+  }
 }

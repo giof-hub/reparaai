@@ -1,4 +1,5 @@
 import 'package:reparaai/config/injection/base_injection.dart';
+
 import 'package:reparaai/core/data/repositories_impl/auth_repository_impl.dart';
 import 'package:reparaai/core/data/repositories_impl/jwt_repository_impl.dart';
 import 'package:reparaai/core/domain/repositories/auth_repository.dart';

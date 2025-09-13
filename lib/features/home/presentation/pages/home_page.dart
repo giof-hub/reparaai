@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
+import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
+
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
+import 'package:reparaai/features/home/presentation/widgets/navigator_bar.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class HomePage extends StatefulWidget {
   static const String nameRoute = "home";
@@ -16,8 +20,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends BasePageState<HomePage, HomeController> {
-  int _currentIndex = 0;
   final TextEditingController _searchController = TextEditingController();
+
+  final List<Map<String, String>> repairs = [
+    {'image': 'assets/eletricista.png', 'title': 'Eletricista'},
+    {'image': 'assets/encanador.png', 'title': 'Encanador'},
+  ];
 
   _HomePageState(super.controller, super.hasAuthenticate);
 
@@ -71,29 +79,54 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                     ],
                   ),
                 ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: CardButton(action: () => controller.signUp()),
+                ),
+                SizedBox(
+                  height: 160,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: repairs.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 140,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          image: DecorationImage(
+                            image: NetworkImage(repairs[index]['image']!),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            color: Colors.black54,
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                              repairs[index]['title']!,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (_, __) => SizedBox(width: 12),
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+      bottomNavigationBar: Observer(
+        builder: (context) {
+          return NavigatorBar(widget.controller);
         },
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        selectedItemColor: Colors.grey,
-        unselectedItemColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
-          BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Buscar'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chats'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
-        ],
       ),
     );
   }
