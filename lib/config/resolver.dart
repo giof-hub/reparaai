@@ -7,6 +7,7 @@ import 'package:reparaai/features/home/presentation/controllers/home_controller.
 import 'package:reparaai/features/home/presentation/pages/home_page.dart';
 import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
 import 'package:reparaai/features/login/presentation/pages/login_page.dart';
+import 'package:reparaai/features/signup/domain/entities/signup_arguments.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_doc_controller.dart';
 import 'package:reparaai/features/signup/presentation/pages/signup_doc_page.dart';
@@ -39,9 +40,13 @@ class Resolver implements AppModule {
   Map<String, widgetBuilderArgs> get routesNavigation => {
     Routes.HOME.getPath(): (context, args) => HomePage(controller: GetIt.I.get<HomeController>()),
     Routes.SIGNUP.getPath(): (context, args) =>
-        SignupPage(controller: GetIt.I.get<SignupController>()),
+        SignupPage(
+          controller: GetIt.I.get<SignupController>(),
+          args: args != null ? args as SignupArguments : null),
     Routes.SIGNUP_DOC.getPath(): (context, args) =>
-        SignupDocPage(controller: GetIt.I.get<SignupDocController>()),
+        SignupDocPage(
+          controller: GetIt.I.get<SignupDocController>(), 
+          args: args != null ? args as SignupArguments : null),
     Routes.LOGIN.getPath(): (context, args) =>
         LoginPage(controller: GetIt.I.get<LoginController>()),
   };

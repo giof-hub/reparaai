@@ -39,6 +39,7 @@ dependencies:
   flutter_mobx: ^2.3.0
   flutter_secure_storage: ^9.2.4
   jwt_decode: ^0.3.1
+  flutter_svg: ^2.2.1
 
 dev_dependencies:
   flutter_test:
@@ -68,8 +69,11 @@ flutter:
   assets:
     - assets/logo.png
     - assets/woman_banner.png
-    - assets\eletricista.png
-    - assets\encanador.png
+    - assets/eletricista.png
+    - assets/encanador.png
+    - assets/ic_id.svg
+    - assets/rg.png
+    - assets/cnh.png
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

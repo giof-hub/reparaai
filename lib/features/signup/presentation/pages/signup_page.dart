@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/core/presentation/widgets/reparaai_input_field.dart';
 import 'package:reparaai/features/signup/domain/entities/enums/account_type_enum.dart';
+import 'package:reparaai/features/signup/domain/entities/signup_arguments.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
 
 class SignupPage extends StatefulWidget {
@@ -10,7 +11,9 @@ class SignupPage extends StatefulWidget {
 
   final SignupController controller;
 
-  const SignupPage({super.key, required this.controller});
+  SignupArguments? args;
+
+  SignupPage({super.key, required this.controller, this.args});
 
   @override
   _SignupPageState createState() => _SignupPageState(controller, false);
@@ -21,6 +24,11 @@ class _SignupPageState extends BasePageState<SignupPage, SignupController> {
   _SignupPageState(super.controller, super.hasAuthenticate);
 
   @override
+  void initState() {
+    controller.init();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -29,7 +37,7 @@ class _SignupPageState extends BasePageState<SignupPage, SignupController> {
         title: const Text("Cadastrar"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SingleChildScrollView(
@@ -138,7 +146,7 @@ class _SignupPageState extends BasePageState<SignupPage, SignupController> {
                   ),
                   onPressed: () {
                     if (controller.formKey.currentState!.validate()) {
-                      // Aqui depois você pode integrar com backend
+                      controller.nextStep();
                     }
                   },
                   child: const Text(
