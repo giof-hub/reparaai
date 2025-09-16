@@ -8,6 +8,8 @@ import 'package:reparaai/features/home/presentation/pages/home_page.dart';
 import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
 import 'package:reparaai/features/login/presentation/pages/login_page.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
+import 'package:reparaai/features/signup/presentation/controllers/signup_doc_controller.dart';
+import 'package:reparaai/features/signup/presentation/pages/signup_doc_page.dart';
 import 'package:reparaai/features/signup/presentation/pages/signup_page.dart';
 
 class Resolver implements AppModule {
@@ -38,6 +40,8 @@ class Resolver implements AppModule {
     Routes.HOME.getPath(): (context, args) => HomePage(controller: GetIt.I.get<HomeController>()),
     Routes.SIGNUP.getPath(): (context, args) =>
         SignupPage(controller: GetIt.I.get<SignupController>()),
+    Routes.SIGNUP_DOC.getPath(): (context, args) =>
+        SignupDocPage(controller: GetIt.I.get<SignupDocController>()),
     Routes.LOGIN.getPath(): (context, args) =>
         LoginPage(controller: GetIt.I.get<LoginController>()),
   };

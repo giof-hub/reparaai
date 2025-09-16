@@ -1,6 +1,7 @@
 import 'package:reparaai/config/resolver.dart';
 import 'package:reparaai/features/home/presentation/pages/home_page.dart';
 import 'package:reparaai/features/login/presentation/pages/login_page.dart';
+import 'package:reparaai/features/signup/presentation/pages/signup_doc_page.dart';
 import 'package:reparaai/features/signup/presentation/pages/signup_page.dart';
 
 enum Routes {
@@ -10,7 +11,8 @@ enum Routes {
     nameRoute: SignupPage.nameRoute,
     isPublic: true,
   ),
-  LOGIN(nameFeature: "login", nameRoute: LoginPage.nameRoute, isPublic: true);
+  LOGIN(nameFeature: "login", nameRoute: LoginPage.nameRoute, isPublic: true),
+  SIGNUP_DOC(nameFeature: "signup", nameRoute: SignupDocPage.nameRoute, isPublic: true);
 
   final String nameFeature;
   final String nameRoute;
