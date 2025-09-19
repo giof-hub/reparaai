@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 class LoginButtonField extends StatelessWidget {
   final bool isPassword;
   final String hint;
+  final TextEditingController loginController;
 
   const LoginButtonField({
     super.key,
     required this.isPassword,
     required this.hint,
-  });
+    required this.loginController
+  }
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class LoginButtonField extends StatelessWidget {
             borderSide: const BorderSide(color: Color(0xFF094A76), width: 2),
           ),
         ),
+        controller: loginController,
         cursorColor: Colors.black,
       ),
     );

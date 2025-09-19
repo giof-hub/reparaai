@@ -6,6 +6,7 @@ import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
 import 'package:reparaai/features/home/presentation/widgets/navigator_bar.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:reparaai/features/home/presentation/widgets/service_card.dart';
 
 class HomePage extends StatefulWidget {
   static const String nameRoute = "home";
@@ -21,12 +22,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends BasePageState<HomePage, HomeController> {
   final TextEditingController _searchController = TextEditingController();
 
-  final List<Map<String, String>> repairs = [
-    {'image': 'assets/eletricista.png', 'title': 'Eletricista'},
-    {'image': 'assets/encanador.png', 'title': 'Encanador'},
-  ];
-
   _HomePageState(super.controller);
+
+  @override
+  void initState() {
+    super.initState();
+    controller.loadRepairs();
+  }
 
   @override
   void dispose() {
@@ -81,61 +83,17 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                 SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(10),
-                  child: CardButton(action: () => controller.signUp()),
+                  child: CardButton(action: () => controller.signIn()),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(right: 15, left: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Reformas e Reparos',
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
-                      ),
-                      Text('Ver todos', style: TextStyle(color: Colors.blue)),
-                    ],
-                  ),
-                ),
-                Padding(padding: EdgeInsetsGeometry.only(top: 10)),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SizedBox(
-                    height: 160,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: repairs.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          width: 140,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              image: Image.asset(repairs[index]['image']!).image,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              color: Colors.black54,
-                              padding: EdgeInsets.all(8),
-                              child: Text(
-                                repairs[index]['title']!,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (_, __) => SizedBox(width: 12),
-                    ),
-                  ),
+                Observer(
+                  builder: (_) {
+                    final repairs = controller.workUseCase;
+                    if (repairs == null) {
+                      return CircularProgressIndicator();
+                    }
+                    return ServiceCard(repairs: repairs);
+                  },
                 ),
               ],
             ),

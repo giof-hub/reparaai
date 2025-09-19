@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reparaai/core/presentation/controllers/reparaai_page_controller.dart';
 import 'package:reparaai/features/login/domain/entities/login_entity.dart';
@@ -9,6 +10,9 @@ class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController extends ReparaaiPageController with Store {
   final LoginUsecase _useCase;
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   _LoginController(this._useCase);
 
