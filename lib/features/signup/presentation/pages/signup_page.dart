@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
+import 'package:reparaai/core/presentation/widgets/reparaai_action_button.dart';
 import 'package:reparaai/core/presentation/widgets/reparaai_input_field.dart';
 import 'package:reparaai/features/signup/domain/entities/enums/account_type_enum.dart';
 import 'package:reparaai/features/signup/domain/entities/signup_arguments.dart';
@@ -130,30 +131,20 @@ class _SignupPageState extends BasePageState<SignupPage, SignupController> {
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 48),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF003366),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
+                child: ReparaaiActionButton(
+                  text: "Continuar",
                   onPressed: () {
                     if (controller.formKey.currentState!.validate()) {
                       controller.nextStep();
                     }
-                  },
-                  child: const Text(
-                    "Continuar",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
+                  }
+                )
               ),
               const SizedBox(height: 20),
           

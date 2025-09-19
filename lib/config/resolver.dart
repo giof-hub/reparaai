@@ -9,9 +9,11 @@ import 'package:reparaai/features/login/presentation/controllers/login_controlle
 import 'package:reparaai/features/login/presentation/pages/login_page.dart';
 import 'package:reparaai/features/signup/domain/entities/signup_arguments.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
-import 'package:reparaai/features/signup/presentation/controllers/signup_doc_controller.dart';
-import 'package:reparaai/features/signup/presentation/pages/signup_doc_page.dart';
+import 'package:reparaai/features/signup/presentation/controllers/choose_document_want_send_controller.dart';
+import 'package:reparaai/features/signup/presentation/controllers/take_photo_with_open_document_controller.dart';
+import 'package:reparaai/features/signup/presentation/pages/choose_document_want_send_page.dart';
 import 'package:reparaai/features/signup/presentation/pages/signup_page.dart';
+import 'package:reparaai/features/signup/presentation/pages/take_photo_with_open_document_page.dart';
 
 class Resolver implements AppModule {
   static const String idModule = 'reparaai';
@@ -43,9 +45,13 @@ class Resolver implements AppModule {
         SignupPage(
           controller: GetIt.I.get<SignupController>(),
           args: args != null ? args as SignupArguments : null),
-    Routes.SIGNUP_DOC.getPath(): (context, args) =>
-        SignupDocPage(
-          controller: GetIt.I.get<SignupDocController>(), 
+    Routes.CHOOSE_DOCUMENT_WANT_SEND.getPath(): (context, args) =>
+        ChooseDocumentWantSendPage(
+          controller: GetIt.I.get<ChooseDocumentWantSendController>(), 
+          args: args != null ? args as SignupArguments : null),
+    Routes.TAKE_PHOTO_WITH_OPEN_DOCUMENT.getPath(): (context, args) =>
+        TakePhotoWithOpenDocumentPage(
+          controller: GetIt.I.get<TakePhotoWithOpenDocumentController>(), 
           args: args != null ? args as SignupArguments : null),
     Routes.LOGIN.getPath(): (context, args) =>
         LoginPage(controller: GetIt.I.get<LoginController>()),

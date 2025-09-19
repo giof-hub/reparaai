@@ -1,5 +1,6 @@
 class Assets {
   
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
 
 }
@@ -7,5 +8,11 @@ class Assets {
 class $AssetsSvgsGen {
   const $AssetsSvgsGen();
 
-  String get icIdCard => 'assets/ic_id.svg';
+  String get icIdCard => 'assets/svgs/ic_id.svg';
+}
+
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  String get identidade => 'assets/images/identidade.png';
 }

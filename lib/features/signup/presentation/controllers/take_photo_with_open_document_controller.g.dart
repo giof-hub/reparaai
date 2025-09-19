@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'signup_doc_controller.dart';
+part of 'take_photo_with_open_document_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,10 @@ part of 'signup_doc_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$SignupDocController on _SignupDocController, Store {
+mixin _$TakePhotoWithOpenDocumentController
+    on _TakePhotoWithOpenDocumentController, Store {
   late final _$signupAtom = Atom(
-    name: '_SignupDocController.signup',
+    name: '_TakePhotoWithOpenDocumentController.signup',
     context: context,
   );
 
@@ -28,7 +29,7 @@ mixin _$SignupDocController on _SignupDocController, Store {
   }
 
   late final _$documentTypeAtom = Atom(
-    name: '_SignupDocController.documentType',
+    name: '_TakePhotoWithOpenDocumentController.documentType',
     context: context,
   );
 
@@ -45,32 +46,37 @@ mixin _$SignupDocController on _SignupDocController, Store {
     });
   }
 
-  late final _$_SignupDocControllerActionController = ActionController(
-    name: '_SignupDocController',
-    context: context,
-  );
+  late final _$_TakePhotoWithOpenDocumentControllerActionController =
+      ActionController(
+        name: '_TakePhotoWithOpenDocumentController',
+        context: context,
+      );
 
   @override
   void setSignUp(SignupEntity signup) {
-    final _$actionInfo = _$_SignupDocControllerActionController.startAction(
-      name: '_SignupDocController.setSignUp',
-    );
+    final _$actionInfo = _$_TakePhotoWithOpenDocumentControllerActionController
+        .startAction(name: '_TakePhotoWithOpenDocumentController.setSignUp');
     try {
       return super.setSignUp(signup);
     } finally {
-      _$_SignupDocControllerActionController.endAction(_$actionInfo);
+      _$_TakePhotoWithOpenDocumentControllerActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDocumentType(DocumentTypeEnum documentType) {
-    final _$actionInfo = _$_SignupDocControllerActionController.startAction(
-      name: '_SignupDocController.setDocumentType',
-    );
+    final _$actionInfo = _$_TakePhotoWithOpenDocumentControllerActionController
+        .startAction(
+          name: '_TakePhotoWithOpenDocumentController.setDocumentType',
+        );
     try {
       return super.setDocumentType(documentType);
     } finally {
-      _$_SignupDocControllerActionController.endAction(_$actionInfo);
+      _$_TakePhotoWithOpenDocumentControllerActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

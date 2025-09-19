@@ -4,11 +4,11 @@ import 'package:reparaai/core/presentation/controllers/reparaai_page_controller.
 import 'package:reparaai/features/signup/domain/entities/enums/document_type_enum.dart';
 import 'package:reparaai/features/signup/domain/entities/signup_entity.dart';
 
-part 'signup_doc_controller.g.dart';
+part 'take_photo_with_open_document_controller.g.dart';
 
-class SignupDocController = _SignupDocController with _$SignupDocController;
+class TakePhotoWithOpenDocumentController = _TakePhotoWithOpenDocumentController with _$TakePhotoWithOpenDocumentController;
 
-abstract class _SignupDocController extends ReparaaiPageController with Store {
+abstract class _TakePhotoWithOpenDocumentController extends ReparaaiPageController with Store {
 
   final formKey = GlobalKey<FormState>();
 

@@ -3,31 +3,37 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:reparaai/core/domain/entities/enums/assets.dart';
 import 'package:reparaai/core/extensions/string_extensions.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
+import 'package:reparaai/core/presentation/widgets/reparaai_action_button.dart';
 import 'package:reparaai/features/signup/domain/entities/enums/document_type_enum.dart';
 import 'package:reparaai/features/signup/domain/entities/signup_arguments.dart';
-import 'package:reparaai/features/signup/presentation/controllers/signup_doc_controller.dart';
+import 'package:reparaai/features/signup/presentation/controllers/choose_document_want_send_controller.dart';
 import 'package:reparaai/features/signup/presentation/widgets/radio_signup_option_widget.dart';
 
-class SignupDocPage extends StatefulWidget {
-  static const String nameRoute = "signup_doc";
+class ChooseDocumentWantSendPage extends StatefulWidget {
+  static const String nameRoute = "choose_document_want_send";
 
-  final SignupDocController controller;
+  final ChooseDocumentWantSendController controller;
 
   SignupArguments? args;
 
-  SignupDocPage({super.key, required this.controller, this.args});
+  ChooseDocumentWantSendPage({super.key, required this.controller, this.args});
 
   @override
-  _SignupDocPageState createState() => _SignupDocPageState(controller, false);
+  _ChooseDocumentWantSendPageState createState() =>
+      _ChooseDocumentWantSendPageState(controller, false);
 }
 
-class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocController> {
-  
-  _SignupDocPageState(super.controller, super.hasAuthenticate);
+class _ChooseDocumentWantSendPageState
+    extends
+        BasePageState<
+          ChooseDocumentWantSendPage,
+          ChooseDocumentWantSendController
+        > {
+  _ChooseDocumentWantSendPageState(super.controller, super.hasAuthenticate);
 
   @override
   void initState() {
-    controller.setSignUp(widget.args!.signup!);
+    controller.setSignupArguments(widget.args!);
   }
 
   @override
@@ -36,7 +42,7 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: const Color(0xFF003366),
-        title: const Text("Cadastrar"),
+        title: const Text("Documentos"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -45,13 +51,13 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
       body: SingleChildScrollView(
         padding: EdgeInsets.only(top: 40, left: 16, right: 16),
         child: Column(
-          children: [            
+          children: [
             Form(
               key: controller.formKey,
               child: Observer(
                 builder: (context) {
                   return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Assets.svgs.icIdCard.toSvg(),
                       const SizedBox(height: 10),
@@ -59,40 +65,55 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
                         padding: EdgeInsets.symmetric(horizontal: 24),
                         child: const Text(
                           "Neste momento iremos solicitar uma foto da sua documentação para validação de sua identidade",
-                          style: TextStyle(fontSize: 14, color: Colors.black87),
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF003366),
+                            fontWeight: FontWeight.w400,
+                          ),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(height: 20),
-                  
+                      const SizedBox(height: 110),
+
                       const Text(
                         "Escolha o documento que deseja enviar",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF003366),
+                        ),
                       ),
+
+                      SizedBox(height: 20),
                       RadioGroup(
                         groupValue: controller.documentType,
-                        onChanged: (value) => controller.setDocumentType(value!),
+                        onChanged: (value) =>
+                            controller.setDocumentType(value!),
                         child: Column(
                           children: [
                             RadioSignupOptionWidget(
                               imagePath: DocumentTypeEnum.RG.path,
-                              description: DocumentTypeEnum.RG.description, 
+                              description: DocumentTypeEnum.RG.description,
                               value: DocumentTypeEnum.RG,
-                              isSelected: controller.documentType == DocumentTypeEnum.RG,
+                              isSelected:
+                                  controller.documentType ==
+                                  DocumentTypeEnum.RG,
                             ),
                             SizedBox(height: 18),
                             RadioSignupOptionWidget(
                               imagePath: DocumentTypeEnum.CNH.path,
-                              description: DocumentTypeEnum.CNH.description, 
+                              description: DocumentTypeEnum.CNH.description,
                               value: DocumentTypeEnum.CNH,
-                              isSelected: controller.documentType == DocumentTypeEnum.CNH,
+                              isSelected:
+                                  controller.documentType ==
+                                  DocumentTypeEnum.CNH,
                             ),
                           ],
                         ),
                       ),
                     ],
                   );
-                }
+                },
               ),
             ),
           ],
@@ -107,24 +128,15 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
               SizedBox(
                 width: double.infinity,
                 height: 45,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF003366),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                  ),
+                child: ReparaaiActionButton(
+                  text: "Continuar",
                   onPressed: () {
                     if (controller.formKey.currentState!.validate()) {
-                      
+                      controller.nextStep();
                     }
                   },
-                  child: const Text(
-                    "Continuar",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),

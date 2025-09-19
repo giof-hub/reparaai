@@ -49,7 +49,7 @@ abstract class _SignupController extends ReparaaiPageController with Store {
     args!.signup = signup;
 
     menuAction(
-      path: "reparaai://module_flutter?route=reparaai/signup/signup_doc", 
+      path: "reparaai://module_flutter?route=reparaai/signup/choose_document_want_send", 
       nome: "Sign Up", args: args
     );
   }
