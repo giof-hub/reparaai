@@ -1,4 +1,6 @@
-enum DocumentTypeEnum {
+import 'package:reparaai/core/domain/entities/enums/abstract_enum.dart';
+
+enum DocumentTypeEnum implements AbstractEnum{
   RG(code: 1, description: 'Carteira de identidade (RG)', path: 'assets/rg.png'),
   CNH(code: 2, description: 'Carteira de motorista (CNH)', path: 'assets/cnh.png');
 

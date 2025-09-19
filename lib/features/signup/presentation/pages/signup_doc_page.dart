@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:reparaai/core/domain/entities/enums/assets.dart';
 import 'package:reparaai/core/extensions/string_extensions.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/features/signup/domain/entities/enums/document_type_enum.dart';
 import 'package:reparaai/features/signup/domain/entities/signup_arguments.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_doc_controller.dart';
+import 'package:reparaai/features/signup/presentation/widgets/radio_signup_option_widget.dart';
 
 class SignupDocPage extends StatefulWidget {
   static const String nameRoute = "signup_doc";
@@ -51,11 +53,12 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Assets.svgs.icIdCard.toSvg(),
                       const SizedBox(height: 10),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 24),
                         child: const Text(
-                          "Nos informe alguns dados para que possamos melhorar a sua experiência na Construtech",
+                          "Neste momento iremos solicitar uma foto da sua documentação para validação de sua identidade",
                           style: TextStyle(fontSize: 14, color: Colors.black87),
                           textAlign: TextAlign.center,
                         ),
@@ -63,7 +66,7 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
                       const SizedBox(height: 20),
                   
                       const Text(
-                        "Escolha o tipo da sua conta",
+                        "Escolha o documento que deseja enviar",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       RadioGroup(
@@ -71,29 +74,18 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
                         onChanged: (value) => controller.setDocumentType(value!),
                         child: Column(
                           children: [
-                            Expanded(
-                              child: RadioListTile(
-                                value: DocumentTypeEnum.RG,
-                                title: Row(
-                                  children: [
-                                    DocumentTypeEnum.RG.path.toImage(width: 40, height: 62),
-                                    Text(DocumentTypeEnum.RG.description, 
-                                      style: TextStyle(fontSize: 12),),
-                                  ],
-                                ),
-                              ),
+                            RadioSignupOptionWidget(
+                              imagePath: DocumentTypeEnum.RG.path,
+                              description: DocumentTypeEnum.RG.description, 
+                              value: DocumentTypeEnum.RG,
+                              isSelected: controller.documentType == DocumentTypeEnum.RG,
                             ),
-                            Expanded(
-                              child: RadioListTile(
-                                value: DocumentTypeEnum.CNH,
-                                title: Row(
-                                  children: [
-                                    DocumentTypeEnum.CNH.path.toImage(width: 40, height: 28),
-                                    Text(DocumentTypeEnum.CNH.description,
-                                    style: TextStyle(fontSize: 12)),
-                                  ],
-                                ),
-                              ),
+                            SizedBox(height: 18),
+                            RadioSignupOptionWidget(
+                              imagePath: DocumentTypeEnum.CNH.path,
+                              description: DocumentTypeEnum.CNH.description, 
+                              value: DocumentTypeEnum.CNH,
+                              isSelected: controller.documentType == DocumentTypeEnum.CNH,
                             ),
                           ],
                         ),
@@ -108,18 +100,18 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 48),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
                 width: double.infinity,
+                height: 45,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF003366),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(32),
                     ),
                   ),
                   onPressed: () {
@@ -129,7 +121,7 @@ class _SignupDocPageState extends BasePageState<SignupDocPage, SignupDocControll
                   },
                   child: const Text(
                     "Continuar",
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               )
