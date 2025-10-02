@@ -22,7 +22,7 @@ class WorkDatasourceImpl implements WorkDatasource {
 
   List<dynamic> getMockListWork() {
     String jsonString = '''
-      [{"name": "Eletricista","pathImage": "assets/eletricista.png"}, {"name": "Eletricista","pathImage": "assets/eletricista.png"}]
+      [{"name": "Encanador","pathImage": "assets/eletricista.png"}, {"name": "Eletricista","pathImage": "assets/encanador.png"}]
     ''';
 
     return json.decode(jsonString);
