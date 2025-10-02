@@ -1,6 +1,12 @@
 import 'package:reparaai/config/injection/base_injection.dart';
 import 'package:reparaai/core/domain/usecases/impl/menu_usecase_impl.dart';
 import 'package:reparaai/core/domain/usecases/menu_usecase.dart';
+import 'package:reparaai/features/home/data/datasource/impl/work_datasource_impl.dart';
+import 'package:reparaai/features/home/data/datasource/work_datasource.dart';
+import 'package:reparaai/features/home/data/repositories_impl/work_repository_impl.dart';
+import 'package:reparaai/features/home/domain/repositories/work_repository.dart';
+import 'package:reparaai/features/home/domain/usecases/impl/work_usecase_impl.dart';
+import 'package:reparaai/features/home/domain/usecases/work_usecase.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/login/domain/usecases/impl/login_usecase_impl.dart';
 import 'package:reparaai/features/login/domain/usecases/login_usecase.dart';
@@ -14,17 +20,24 @@ class Injection extends BaseInjection {
   void registerControllers() {
     register<LoginController>(() => LoginController(getIt()));
     register<SignupController>(() => SignupController(getIt()));
-    register<HomeController>(() => HomeController());
+    register<HomeController>(() => HomeController(getIt()));
   }
 
   @override
-  void registerDataSources() {}
+  void registerDataSources() {
+
+    register<WorkDatasource>(() => WorkDatasourceImpl());
+
+  }
 
   @override
   void registerExternals() {}
 
   @override
-  void registerRepositories() {}
+  void registerRepositories() {
+
+    register<WorkRepository>(() => WorkRepositoryImpl(getIt()));
+  }
 
   @override
   void registerSingletons() {}
@@ -34,5 +47,6 @@ class Injection extends BaseInjection {
     register<LoginUsecase>(() => LoginUsecaseImpl());
     register<SignupUsecase>(() => SignupUsecaseImpl());
     register<MenuUseCase>(() => MenuUsecaseImpl());
+    register<WorkUseCase>(() => WorkUsecaseImpl(getIt()));
   }
 }

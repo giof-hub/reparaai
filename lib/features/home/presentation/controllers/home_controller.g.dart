@@ -27,6 +27,34 @@ mixin _$HomeController on _HomeController, Store {
     });
   }
 
+  late final _$worksAtom = Atom(
+    name: '_HomeController.works',
+    context: context,
+  );
+
+  @override
+  List<WorkEntity>? get works {
+    _$worksAtom.reportRead();
+    return super.works;
+  }
+
+  @override
+  set works(List<WorkEntity>? value) {
+    _$worksAtom.reportWrite(value, super.works, () {
+      super.works = value;
+    });
+  }
+
+  late final _$_fetchWorksAsyncAction = AsyncAction(
+    '_HomeController._fetchWorks',
+    context: context,
+  );
+
+  @override
+  Future<void> _fetchWorks() {
+    return _$_fetchWorksAsyncAction.run(() => super._fetchWorks());
+  }
+
   late final _$_HomeControllerActionController = ActionController(
     name: '_HomeController',
     context: context,
@@ -57,21 +85,10 @@ mixin _$HomeController on _HomeController, Store {
   }
 
   @override
-  void loadRepairs() {
-    final _$actionInfo = _$_HomeControllerActionController.startAction(
-      name: '_HomeController.loadRepairs',
-    );
-    try {
-      return super.loadRepairs();
-    } finally {
-      _$_HomeControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
-currentIndex: ${currentIndex}
+currentIndex: ${currentIndex},
+works: ${works}
     ''';
   }
 }

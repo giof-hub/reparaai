@@ -27,7 +27,7 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
   @override
   void initState() {
     super.initState();
-    controller.loadRepairs();
+    controller.init();
   }
 
   @override
@@ -85,14 +85,9 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                   padding: const EdgeInsets.all(10),
                   child: CardButton(action: () => controller.signIn()),
                 ),
-
                 Observer(
-                  builder: (_) {
-                    final repairs = controller.workUseCase;
-                    if (repairs == null) {
-                      return CircularProgressIndicator();
-                    }
-                    return ServiceCard(repairs: repairs);
+                  builder: (context) {
+                    return ServiceCard(works: controller.works ?? []);
                   },
                 ),
               ],
