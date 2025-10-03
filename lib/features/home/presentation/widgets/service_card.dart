@@ -48,9 +48,13 @@ class ServiceCard extends StatelessWidget {
                           alignment: Alignment.bottomCenter,
                           child: Container(
                             width: double.infinity,
-                            color: Colors.black54,
                             padding: const EdgeInsets.all(8),
-                            foregroundDecoration: BoxDecoration(
+                            decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadiusGeometry.only(
+                                bottomLeft: Radius.circular(12),
+                                bottomRight: Radius.circular(12),
+                              ),
                             ),
                             child: Text(
                               work.name,

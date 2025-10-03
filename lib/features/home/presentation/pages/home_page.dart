@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
+import 'package:reparaai/core/presentation/widgets/appbar.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
@@ -39,23 +40,7 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: TextField(
-          controller: _searchController,
-          style: const TextStyle(color: Colors.black),
-          cursorColor: Colors.black,
-          decoration: InputDecoration(
-            hintText: 'Pesquisar...',
-            hintStyle: TextStyle(color: Colors.grey[400]),
-            border: InputBorder.none,
-            prefixIcon: const Icon(Icons.search, color: Colors.black),
-          ),
-          onSubmitted: (value) {},
-        ),
-      ),
-
+      appBar: AppBarWidget(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -77,6 +62,7 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                         label: 'Serviços gerais',
                       ),
                       ServiceButton(icon: Icons.handyman, label: 'Carpintaria'),
+                      ServiceButton(icon: Icons.key, label: 'Chaveiro')
                     ],
                   ),
                 ),
