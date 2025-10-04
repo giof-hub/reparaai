@@ -1,0 +1,6 @@
+import 'package:reparaai/core/data/models/response_app.dart';
+import 'package:reparaai/features/search/domain/entities/service_entity.dart';
+
+abstract class ServiceUsecase {
+  Future<ResponseApp<Exception, List<ServiceEntity>>> listService();
+}

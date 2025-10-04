@@ -7,6 +7,8 @@ import 'package:reparaai/features/home/presentation/controllers/home_controller.
 import 'package:reparaai/features/home/presentation/pages/home_page.dart';
 import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
 import 'package:reparaai/features/login/presentation/pages/login_page.dart';
+import 'package:reparaai/features/search/presentation/controllers/search_controller.dart';
+import 'package:reparaai/features/search/presentation/pages/search_page.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
 import 'package:reparaai/features/signup/presentation/pages/signup_page.dart';
 
@@ -41,6 +43,8 @@ class Resolver implements AppModule {
         SignupPage(controller: GetIt.I.get<SignupController>()),
     Routes.LOGIN.getPath(): (context, args) =>
         LoginPage(controller: GetIt.I.get<LoginController>()),
+    Routes.SEARCH.getPath(): (context, args) =>
+        SearchPage(controller: GetIt.I.get<SearchReparaiController>())
   };
 
   @override
