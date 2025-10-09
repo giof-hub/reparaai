@@ -8,6 +8,7 @@ part 'home_controller.g.dart';
 class HomeController = _HomeController with _$HomeController;
 
 abstract class _HomeController extends ReparaaiPageController with Store {
+
   final WorkUseCase _workUseCase;
 
   _HomeController(this._workUseCase);

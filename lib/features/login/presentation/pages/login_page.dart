@@ -11,11 +11,13 @@ class LoginPage extends StatefulWidget {
   LoginPage({required this.controller, super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState(controller);
+  _LoginPageState createState() => _LoginPageState(controller, false);
 }
 
 class _LoginPageState extends BasePageState<LoginPage, LoginController> {
-  _LoginPageState(super.controller);
+  
+  _LoginPageState(super.controller, super.hasAuthenticate);
+
 
   @override
   Widget build(BuildContext context) {

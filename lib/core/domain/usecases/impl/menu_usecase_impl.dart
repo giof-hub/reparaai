@@ -9,6 +9,7 @@ import 'package:reparaai/core/extensions/map_extensions.dart';
 import 'package:reparaai/core/data/models/response_app.dart';
 
 class MenuUsecaseImpl implements MenuUseCase {
+
   @override
   Future<ResponseApp<Exception, bool>> navigate({
     ItemMenuNavigationEntity? menuNavigation,
@@ -91,7 +92,6 @@ class MenuUsecaseImpl implements MenuUseCase {
     ItemMenuNavigationEntity menuNavigation, {
     Object? argsPageFlutter,
   }) async {
-    print(menuNavigation.getPathFlutter());
 
     ConfigHelp.navegador.currentState?.pushNamed(
       menuNavigation.getPathFlutter()!,
