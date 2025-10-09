@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reparaai/app/base_app.dart';
+import 'package:reparaai/config/config_help.dart';
 import 'package:reparaai/core/data/models/app_module.dart';
 
 class CoreAppWidget extends StatefulWidget {
@@ -36,6 +37,7 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: ConfigHelp.navegador,
       restorationScopeId: "app",
       debugShowCheckedModeBanner: false,
       title: "ReparaAi",

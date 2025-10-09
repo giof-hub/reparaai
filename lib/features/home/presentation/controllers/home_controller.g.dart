@@ -9,10 +9,86 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeController on _HomeController, Store {
+  late final _$currentIndexAtom = Atom(
+    name: '_HomeController.currentIndex',
+    context: context,
+  );
+
+  @override
+  int? get currentIndex {
+    _$currentIndexAtom.reportRead();
+    return super.currentIndex;
+  }
+
+  @override
+  set currentIndex(int? value) {
+    _$currentIndexAtom.reportWrite(value, super.currentIndex, () {
+      super.currentIndex = value;
+    });
+  }
+
+  late final _$worksAtom = Atom(
+    name: '_HomeController.works',
+    context: context,
+  );
+
+  @override
+  List<WorkEntity>? get works {
+    _$worksAtom.reportRead();
+    return super.works;
+  }
+
+  @override
+  set works(List<WorkEntity>? value) {
+    _$worksAtom.reportWrite(value, super.works, () {
+      super.works = value;
+    });
+  }
+
+  late final _$_fetchWorksAsyncAction = AsyncAction(
+    '_HomeController._fetchWorks',
+    context: context,
+  );
+
+  @override
+  Future<void> _fetchWorks() {
+    return _$_fetchWorksAsyncAction.run(() => super._fetchWorks());
+  }
+
+  late final _$_HomeControllerActionController = ActionController(
+    name: '_HomeController',
+    context: context,
+  );
+
+  @override
+  void setCurrentIndex(int currentIndex) {
+    final _$actionInfo = _$_HomeControllerActionController.startAction(
+      name: '_HomeController.setCurrentIndex',
+    );
+    try {
+      return super.setCurrentIndex(currentIndex);
+    } finally {
+      _$_HomeControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void signIn() {
+    final _$actionInfo = _$_HomeControllerActionController.startAction(
+      name: '_HomeController.signIn',
+    );
+    try {
+      return super.signIn();
+    } finally {
+      _$_HomeControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-
+currentIndex: ${currentIndex},
+works: ${works}
     ''';
   }
 }

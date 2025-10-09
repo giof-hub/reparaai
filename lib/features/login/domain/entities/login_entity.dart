@@ -5,4 +5,8 @@ class LoginEntity {
   LoginEntity({required this.login, required this.password});
 
   LoginEntity.empty({this.login = "", this.password = ""});
+
+  
+
+
 }

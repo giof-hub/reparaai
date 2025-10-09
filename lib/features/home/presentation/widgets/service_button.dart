@@ -17,7 +17,6 @@ class ServiceButton extends StatelessWidget {
           Container(
             width: 80,
             height: 80,
-            //margin: EdgeInsets.only(right: 10),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.lightBlueAccent,
@@ -25,7 +24,6 @@ class ServiceButton extends StatelessWidget {
             ),
             child: Icon(icon, color: Colors.white, size: 30),
           ),
-
           SizedBox(height: 8),
           Text(
             label,

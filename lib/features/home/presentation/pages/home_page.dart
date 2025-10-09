@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:reparaai/core/presentation/pages/base_page_state.dart';
+import 'package:reparaai/core/presentation/widgets/appbar.dart';
+import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
+import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
+import 'package:reparaai/features/home/presentation/widgets/navigator_bar.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:reparaai/features/home/presentation/widgets/service_card.dart';
 
 class HomePage extends StatefulWidget {
-
   static const String nameRoute = "home";
 
-  const HomePage({super.key});
+  final HomeController controller;
+
+  const HomePage(this.controller, {super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState(controller);
 }
 
-class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+class _HomePageState extends BasePageState<HomePage, HomeController> {
   final TextEditingController _searchController = TextEditingController();
+
+  _HomePageState(super.controller);
+
+  @override
+  void initState() {
+    super.initState();
+    controller.init();
+  }
 
   @override
   void dispose() {
@@ -25,23 +40,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: TextField(
-          controller: _searchController,
-          style: const TextStyle(color: Colors.black),
-          cursorColor: Colors.black,
-          decoration: InputDecoration(
-            hintText: 'Pesquisar...',
-            hintStyle: TextStyle(color: Colors.grey[400]),
-            border: InputBorder.none,
-            prefixIcon: const Icon(Icons.search, color: Colors.black),
-          ),
-          onSubmitted: (value) {},
-        ),
-      ),
-
+      appBar: AppBarWidget(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -63,32 +62,29 @@ class _HomePageState extends State<HomePage> {
                         label: 'Serviços gerais',
                       ),
                       ServiceButton(icon: Icons.handyman, label: 'Carpintaria'),
+                      ServiceButton(icon: Icons.key, label: 'Chaveiro')
                     ],
                   ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: CardButton(action: () => controller.signIn()),
+                ),
+                Observer(
+                  builder: (context) {
+                    return ServiceCard(works: controller.works ?? []);
+                  },
                 ),
               ],
             ),
           ),
         ),
       ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+      bottomNavigationBar: Observer(
+        builder: (context) {
+          return NavigatorBar(widget.controller);
         },
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        selectedItemColor: Colors.grey,
-        unselectedItemColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
-          BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Buscar'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chats'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
-        ],
       ),
     );
   }
