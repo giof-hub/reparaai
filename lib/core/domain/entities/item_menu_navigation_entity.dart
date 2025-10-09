@@ -3,14 +3,12 @@ import 'package:reparaai/core/extensions/map_extensions.dart';
 class ItemMenuNavigationEntity {
   String nomeMenu;
   String urlMenu;
-  bool? menuSeguro;
-  String? identificadorMenuSeguro;
+  bool? isSafeMenu;
 
   ItemMenuNavigationEntity({
     required this.nomeMenu,
     required this.urlMenu,
-    this.menuSeguro,
-    this.identificadorMenuSeguro,
+    this.isSafeMenu
   });
 
   bool get isRotaFlutter => urlMenu.trim().startsWith("reparaai://module_flutter") && urlMenu.contains("route=");

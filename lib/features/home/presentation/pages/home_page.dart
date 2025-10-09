@@ -3,6 +3,7 @@ import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/core/presentation/widgets/appbar.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
+
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
 import 'package:reparaai/features/home/presentation/widgets/navigator_bar.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
@@ -14,16 +15,17 @@ class HomePage extends StatefulWidget {
 
   final HomeController controller;
 
-  const HomePage(this.controller, {super.key});
+  const HomePage({super.key, required this.controller});
 
   @override
-  _HomePageState createState() => _HomePageState(controller);
+  _HomePageState createState() => _HomePageState(controller, true);
 }
 
 class _HomePageState extends BasePageState<HomePage, HomeController> {
   final TextEditingController _searchController = TextEditingController();
 
-  _HomePageState(super.controller);
+  _HomePageState(super.controller, super.hasAuthenticate);
+
 
   @override
   void initState() {

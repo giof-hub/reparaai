@@ -65,8 +65,7 @@ abstract class _ReparaaiPageControllerBase extends BaseController with Store {
   Future<void> menuAction({
     required String path,
     required String nome,
-    bool? menuSeguro = false,
-    String? idSafeMenu,
+    bool? isSafeMenu = false,
     Object? args,
   }) async {
     MenuUseCase menuUseCase = GetIt.I.get<MenuUseCase>();
@@ -75,15 +74,14 @@ abstract class _ReparaaiPageControllerBase extends BaseController with Store {
         menuNavigation: ItemMenuNavigationEntity(
           nomeMenu: nome,
           urlMenu: path,
-          menuSeguro: menuSeguro,
-          identificadorMenuSeguro: idSafeMenu,
+          isSafeMenu: isSafeMenu
         ),
         argsPageFlutter: args,
       ),
     );
     responseMenu.process(
       error: (exception) => print(exception.toString()),
-      result: (result) => print("ReparaaiPageController Navegando menu $result"),
+      result: (result) => print("ReparaaiPageController $result"),
     );
   }
 }

@@ -50,6 +50,15 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
           backgroundColor: const Color.fromARGB(255, 32, 95, 168),
           foregroundColor: Colors.white,
         ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0)
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide(color: Color.fromARGB(255, 32, 95, 168), width: 2)
+          ),
+        )
       ),
     );
   }
