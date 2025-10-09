@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardSearch extends StatelessWidget {
+
   const CardSearch({super.key});
 
   @override
@@ -45,12 +46,7 @@ class CardSearch extends StatelessWidget {
           SizedBox(width: 8),
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              'assets/banner_guy.png',
-              width: 95,
-              height: 95,
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/banner_guy.png', width: 95, height: 95, fit: BoxFit.cover),
           ),
         ],
       ),

@@ -69,6 +69,9 @@ flutter:
     - assets/eletricista.png
     - assets/encanador.png
     - assets/banner_guy.png
+    - assets/chaveiro.png
+    - assets/eletrodomestico.png
+    - assets/mercenaria.png
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

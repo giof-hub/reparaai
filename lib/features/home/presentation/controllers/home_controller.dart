@@ -42,8 +42,8 @@ abstract class _HomeController extends ReparaaiPageController with Store {
   @action
   void signIn() {
     menuAction(
-      path: "reparaai://module_flutter?route=reparaai/search/search",
-      nome: "search",
+      path: "reparaai://module_flutter?route=reparaai/login/login",
+      nome: "login",
     );
   }
 }

@@ -11,6 +11,12 @@ import 'package:reparaai/features/home/presentation/controllers/home_controller.
 import 'package:reparaai/features/login/domain/usecases/impl/login_usecase_impl.dart';
 import 'package:reparaai/features/login/domain/usecases/login_usecase.dart';
 import 'package:reparaai/features/login/presentation/controllers/login_controller.dart';
+import 'package:reparaai/features/search/data/datasource/impl/search_datasource_impl.dart';
+import 'package:reparaai/features/search/data/datasource/search_datasource.dart';
+import 'package:reparaai/features/search/domain/repositories/impl/search_repository_impl.dart';
+import 'package:reparaai/features/search/domain/repositories/search_repository.dart';
+import 'package:reparaai/features/search/domain/usecases/impl/search_usecase_impl.dart';
+import 'package:reparaai/features/search/domain/usecases/search_usecase.dart';
 import 'package:reparaai/features/search/presentation/controllers/search_controller.dart';
 import 'package:reparaai/features/signup/domain/usecases/impl/signup_usecase_impl.dart';
 import 'package:reparaai/features/signup/domain/usecases/signup_usecase.dart';
@@ -22,12 +28,13 @@ class Injection extends BaseInjection {
     register<LoginController>(() => LoginController(getIt()));
     register<SignupController>(() => SignupController(getIt()));
     register<HomeController>(() => HomeController(getIt()));
-    register<SearchReparaiController>(() => SearchReparaiController());
+    register<SearchReparaiController>(() => SearchReparaiController(getIt()));
   }
 
   @override
   void registerDataSources() {
     register<WorkDatasource>(() => WorkDatasourceImpl());
+    register<ServiceDatasource>(() => ServiceDatasourceImpl());
   }
 
   @override
@@ -36,6 +43,7 @@ class Injection extends BaseInjection {
   @override
   void registerRepositories() {
     register<WorkRepository>(() => WorkRepositoryImpl(getIt()));
+    register<ServiceRepository>(() => ServiceRepositoryImpl(getIt()));
   }
 
   @override
@@ -47,5 +55,6 @@ class Injection extends BaseInjection {
     register<SignupUsecase>(() => SignupUsecaseImpl());
     register<MenuUseCase>(() => MenuUsecaseImpl());
     register<WorkUseCase>(() => WorkUsecaseImpl(getIt()));
+    register<ServiceUsecase>(() => ServiceUsecaseImpl(getIt()));
   }
 }

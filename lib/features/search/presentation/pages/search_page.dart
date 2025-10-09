@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/core/presentation/widgets/appbar.dart';
 import 'package:reparaai/features/search/presentation/controllers/search_controller.dart';
-import 'package:reparaai/features/search/presentation/widgets/card_search.dart';
+import 'package:reparaai/features/search/presentation/widgets/search_card.dart';
+import 'package:reparaai/features/search/presentation/widgets/search_works.dart';
 
 class SearchPage extends StatefulWidget {
   static const String nameRoute = "search";
@@ -24,6 +26,7 @@ class _searchPageState
   @override
   void initState() {
     super.initState();
+    controller.init();
   }
 
   @override
@@ -40,9 +43,17 @@ class _searchPageState
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsetsGeometry.all(8.0),
-            child: Column(children: <Widget>[
-              CardSearch(),
-            ]),
+            child: Column(
+              children: <Widget>[
+                CardSearch(),
+                Padding(padding: EdgeInsetsGeometry.only(top: 10)),
+                Observer(
+                  builder: (context) {
+                    return SearchWorks(entity: controller.services ?? []);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
