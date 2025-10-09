@@ -8,7 +8,7 @@ class LoginPage extends StatefulWidget {
   static const String nameRoute = "login";
   final LoginController controller;
 
-  const LoginPage({required this.controller, super.key});
+  LoginPage({required this.controller, super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState(controller, false);
@@ -17,6 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends BasePageState<LoginPage, LoginController> {
   
   _LoginPageState(super.controller, super.hasAuthenticate);
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +39,14 @@ class _LoginPageState extends BasePageState<LoginPage, LoginController> {
                       LoginButtonField(
                         isPassword: false,
                         hint: 'Informe seu e-mail',
+                        loginController: controller.emailController,
                       ),
                       const SizedBox(height: 20),
-                      LoginButtonField(isPassword: true, hint: 'Senha'),
+                      LoginButtonField(
+                        isPassword: true,
+                        hint: 'Senha',
+                        loginController: controller.passwordController,
+                      ),
                       const SizedBox(height: 10),
                       TextButton(
                         onPressed: () {},
@@ -53,7 +59,10 @@ class _LoginPageState extends BasePageState<LoginPage, LoginController> {
                         ),
                       ),
                       const SizedBox(height: 30),
-                      ButtonField(onPressed: () => controller.signin(), text: 'Acessar'),
+                      ButtonField(
+                        onPressed: () => controller.signin(),
+                        text: 'Acessar',
+                      ),
                       const SizedBox(height: 10),
                       ButtonField(
                         onPressed: () => controller.signup(),

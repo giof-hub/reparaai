@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:reparaai/core/data/models/app_module.dart';
-import 'package:reparaai/core/extensions/map_extensions.dart';
 
 abstract mixin class BaseApp {
   List<AppModule> get modules;
