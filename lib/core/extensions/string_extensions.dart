@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 extension StringExtensions on String {
   SvgPicture toSvg({ColorFilter? corFilter, Color? cor, double? width, double? height, BoxFit? fit}) {
@@ -19,6 +20,25 @@ extension StringExtensions on String {
       width: width,
       height: height,
       fit: fit ?? BoxFit.contain,
+    );
+  }
+
+  LottieBuilder toAnimationLottie({
+    double? width,
+    double? height,
+    bool? repeat,
+    Animation<double>? controller,
+    void Function(LottieComposition)? onLoaded,
+    BoxFit? fit,
+  }) {
+    return Lottie.asset(
+      AssetImage(this).keyName,
+      width: width,
+      height: height,
+      controller: controller,
+      fit: fit,
+      repeat: repeat ?? true,
+      onLoaded: onLoaded,
     );
   }
 }
