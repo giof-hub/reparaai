@@ -40,6 +40,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   jwt_decode: ^0.3.1
   flutter_svg: ^2.2.1
+  lottie: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +80,8 @@ flutter:
     - assets/rg.png
     - assets/cnh.png
     - assets/images/identidade.png
+    - assets/mocks/categories.json
+    - assets/animations/loading_reparaai.json
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -1,17 +1,24 @@
 import 'package:mobx/mobx.dart';
 import 'package:reparaai/core/presentation/controllers/reparaai_page_controller.dart';
+import 'package:reparaai/features/home/domain/entities/category_entity.dart';
 import 'package:reparaai/features/home/domain/entities/work_entity.dart';
+import 'package:reparaai/features/home/domain/usecases/category_usecase.dart';
 import 'package:reparaai/features/home/domain/usecases/work_usecase.dart';
+import 'package:reparaai/core/data/models/response_app.dart';
 
 part 'home_controller.g.dart';
 
 class HomeController = _HomeController with _$HomeController;
 
 abstract class _HomeController extends ReparaaiPageController with Store {
-
   final WorkUseCase _workUseCase;
 
-  _HomeController(this._workUseCase);
+  final CategoryUsecase _categoryUsecase;
+
+  ObservableFuture<ResponseApp<Exception, List<CategoryEntity>>>?
+  categoriesFuture;
+
+  _HomeController(this._workUseCase, this._categoryUsecase);
 
   @observable
   int? currentIndex;
@@ -21,6 +28,7 @@ abstract class _HomeController extends ReparaaiPageController with Store {
 
   void init() {
     _fetchWorks();
+    _fetchCategories();
   }
 
   @action
@@ -33,6 +41,11 @@ abstract class _HomeController extends ReparaaiPageController with Store {
       },
       error: (error) => throw Exception(error.toString()),
     );
+  }
+
+  @action
+  Future<void> _fetchCategories() async {
+    categoriesFuture = ObservableFuture(_categoryUsecase.listCategories());
   }
 
   @action
