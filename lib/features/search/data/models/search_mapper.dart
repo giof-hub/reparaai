@@ -2,7 +2,6 @@ import 'package:reparaai/core/data/models/data_model.dart';
 import 'package:reparaai/core/data/models/remote_data_source_model.dart';
 import 'package:reparaai/core/extensions/map_extensions.dart';
 import 'package:reparaai/features/search/domain/entities/search_entity.dart';
-import 'dart:convert';
 
 class SearchMapper {
   SearchMapper._();

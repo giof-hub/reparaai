@@ -49,7 +49,7 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                cardHome(),
+                CardHome(),
                 Padding(padding: EdgeInsets.only(top: 20)),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,

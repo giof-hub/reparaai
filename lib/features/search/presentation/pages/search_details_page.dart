@@ -3,6 +3,9 @@ import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/features/search/domain/entities/search_details_arguments.dart';
 import 'package:reparaai/features/search/presentation/controllers/search_detail_controller.dart';
 import 'package:reparaai/core/presentation/widgets/appbar_detail.dart';
+import 'package:reparaai/features/search/presentation/widgets/search_bottom.dart';
+import 'package:reparaai/features/search/presentation/widgets/search_detail_card.dart';
+import 'package:reparaai/features/search/presentation/widgets/search_detail_description.dart';
 
 class SearchDetailsPage extends StatefulWidget {
   static const String nameRoute = "searchDetails";
@@ -29,6 +32,12 @@ class _SearchDetailsPageState
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    controller.clean();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidgetDetail(title: widget.arguments.serviceSelected!.name),
@@ -36,77 +45,13 @@ class _SearchDetailsPageState
         child: Column(
           children: [
             // Imagem do topo
-            Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                Image.asset(
-                  widget.arguments.serviceSelected!.pathName,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.blue,
-                  child: Text(
-                    widget.arguments.serviceSelected!.name,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+            SearchDetailCard(
+              pathName: widget.arguments.serviceSelected!.pathName,
+              name: widget.arguments.serviceSelected!.name,
             ),
-
             // Card com serviços
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.blue.shade100,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: const Text(
-                          'Garantia da Reparai',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      ...List.generate(
-                        widget.arguments.serviceSelected!.description.length,
-                        (index) => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 2.0),
-                          child: Text(
-                            "• ${widget.arguments.serviceSelected!.description[index]}",
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: const Text("Ver mais informações"),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            SearchDetailDescription(
+              description: widget.arguments.serviceSelected!.description,
             ),
 
             // Profissionais disponíveis
@@ -120,21 +65,7 @@ class _SearchDetailsPageState
             // const SizedBox(height: 10),
 
             // Botão "Procurar"
-            ElevatedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
-              label: Text("dados!"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-            ),
+            SearchBottom(),
             const SizedBox(height: 20),
 
             // Publicidade / Mapa

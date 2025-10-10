@@ -24,7 +24,10 @@ abstract class _SearchDetailController extends ReparaaiPageController
 
   void init(SearchDetailsArguments arguments) {
     setArguments(arguments);
+  }
 
+  void clean() {
+    setServices([]);
   }
 
   void redirectToSearchDetails(ServiceEntity service) async {
@@ -38,4 +41,10 @@ abstract class _SearchDetailController extends ReparaaiPageController
   void setArguments(SearchDetailsArguments arguments) {
     this.arguments = arguments;
   }
+
+  @action
+  void setServices(List<ServiceEntity> services) {
+    this.services = services;
+  }
 }
+ 
