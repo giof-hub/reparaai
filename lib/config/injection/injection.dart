@@ -8,10 +8,16 @@ import 'package:reparaai/core/domain/usecases/auth_usecase.dart';
 import 'package:reparaai/core/domain/usecases/impl/auth_usecase_impl.dart';
 import 'package:reparaai/core/domain/usecases/impl/menu_usecase_impl.dart';
 import 'package:reparaai/core/domain/usecases/menu_usecase.dart';
+import 'package:reparaai/features/home/data/datasource/category_datasource.dart';
+import 'package:reparaai/features/home/data/datasource/impl/category_datasource_impl.dart';
 import 'package:reparaai/features/home/data/datasource/impl/work_datasource_impl.dart';
 import 'package:reparaai/features/home/data/datasource/work_datasource.dart';
+import 'package:reparaai/features/home/data/repositories_impl/category_repository_impl.dart';
 import 'package:reparaai/features/home/data/repositories_impl/work_repository_impl.dart';
+import 'package:reparaai/features/home/domain/repositories/category_repository.dart';
 import 'package:reparaai/features/home/domain/repositories/work_repository.dart';
+import 'package:reparaai/features/home/domain/usecases/category_usecase.dart';
+import 'package:reparaai/features/home/domain/usecases/impl/category_usecase_impl.dart';
 import 'package:reparaai/features/home/domain/usecases/impl/work_usecase_impl.dart';
 import 'package:reparaai/features/home/domain/usecases/work_usecase.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
@@ -29,7 +35,7 @@ class Injection extends BaseInjection {
   void registerControllers() {
     register<LoginController>(() => LoginController(getIt()));
     register<SignupController>(() => SignupController(getIt()));
-    register<HomeController>(() => HomeController(getIt()));
+    register<HomeController>(() => HomeController(getIt(), getIt()));
     register<ChooseDocumentWantSendController>(() => ChooseDocumentWantSendController());
     register<TakePhotoWithOpenDocumentController>(() => TakePhotoWithOpenDocumentController());
   }
@@ -38,6 +44,7 @@ class Injection extends BaseInjection {
   void registerDataSources() {
 
     register<WorkDatasource>(() => WorkDatasourceImpl());
+    register<CategoryDatasource>(() => CategoryDatasourceImpl());
 
   }
 
@@ -49,6 +56,7 @@ class Injection extends BaseInjection {
     register<JwtRepository>(() => JwtRepositoryImpl());
     register<AuthRepository>(() => AuthRepositoryImpl(getIt()));
     register<WorkRepository>(() => WorkRepositoryImpl(getIt()));
+    register<CategoryRepository>(() => CategoryRepositoryImpl(getIt()));
   }
 
   @override
@@ -61,5 +69,6 @@ class Injection extends BaseInjection {
     register<AuthUsecase>(() => AuthUsecaseImpl(getIt()));
     register<MenuUseCase>(() => MenuUsecaseImpl());
     register<WorkUseCase>(() => WorkUsecaseImpl(getIt()));
+    register<CategoryUsecase>(() => CategoryUsecaseImpl(getIt()));
   }
 }

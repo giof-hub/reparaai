@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/core/presentation/widgets/appbar.dart';
+import 'package:reparaai/features/home/domain/entities/category_entity.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
 
@@ -25,7 +26,6 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
   final TextEditingController _searchController = TextEditingController();
 
   _HomePageState(super.controller, super.hasAuthenticate);
-
 
   @override
   void initState() {
@@ -57,14 +57,16 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(padding: EdgeInsets.all(4)),
-                      ServiceButton(icon: Icons.format_paint, label: 'Pintura'),
-                      ServiceButton(icon: Icons.grass, label: 'Jardinagem'),
-                      ServiceButton(
-                        icon: Icons.build,
-                        label: 'Serviços gerais',
+                      ListView.builder(
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          CategoryEntity category = CategoryEntity.empty();
+                          return ServiceButton(
+                            icon: IconData(int.parse(category.icon), fontFamily: 'MaterialIcons'),
+                            label: category.label,
+                          );
+                        },
                       ),
-                      ServiceButton(icon: Icons.handyman, label: 'Carpintaria'),
-                      ServiceButton(icon: Icons.key, label: 'Chaveiro')
                     ],
                   ),
                 ),
