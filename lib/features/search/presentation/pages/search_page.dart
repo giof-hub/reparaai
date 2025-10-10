@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/core/presentation/widgets/appbar.dart';
+import 'package:reparaai/features/search/domain/entities/search_entity.dart';
 import 'package:reparaai/features/search/presentation/controllers/search_controller.dart';
 import 'package:reparaai/features/search/presentation/widgets/search_card.dart';
 import 'package:reparaai/features/search/presentation/widgets/search_works.dart';
@@ -14,14 +15,14 @@ class SearchPage extends StatefulWidget {
   const SearchPage({required this.controller, super.key});
 
   @override
-  _searchPageState createState() => _searchPageState(controller);
+  _SearchPageState createState() => _SearchPageState(controller, false);
 }
 
-class _searchPageState
+class _SearchPageState
     extends BasePageState<SearchPage, SearchReparaiController> {
   final TextEditingController _searchController = TextEditingController();
 
-  _searchPageState(super.controller);
+  _SearchPageState(super.controller, super.hasAuthenticate);
 
   @override
   void initState() {
@@ -33,6 +34,7 @@ class _searchPageState
   void dispose() {
     _searchController.dispose();
     super.dispose();
+    controller.clean();
   }
 
   @override
@@ -49,7 +51,24 @@ class _searchPageState
                 Padding(padding: EdgeInsetsGeometry.only(top: 10)),
                 Observer(
                   builder: (context) {
-                    return SearchWorks(entity: controller.services ?? []);
+                    // return SearchWorks(
+                    //   entity: controller.services ?? [],
+                    //   action: () => controller.redirectToSearchDetails(),
+                    // );
+                    return ListView.builder(
+                      itemCount: (controller.services ?? []).length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        List<ServiceEntity> services =
+                            controller.services ?? [];
+                        return SearchWorks(
+                          work: services[index],
+                          action: () => controller.redirectToSearchDetails(
+                            services[index],
+                          ),
+                        );
+                      },
+                    );
                   },
                 ),
               ],

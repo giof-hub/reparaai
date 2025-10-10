@@ -2,6 +2,7 @@ import 'package:reparaai/core/data/models/data_model.dart';
 import 'package:reparaai/core/data/models/remote_data_source_model.dart';
 import 'package:reparaai/core/extensions/map_extensions.dart';
 import 'package:reparaai/features/search/domain/entities/search_entity.dart';
+import 'dart:convert';
 
 class SearchMapper {
   SearchMapper._();
@@ -32,13 +33,13 @@ class SearchMapper {
     String name = map.getValueOrDefault(key: "name", def: "");
     String pathImage = map.getValueOrDefault(key: "pathImage", def: "");
     num avaliation = map.getValueOrDefault(key: "avaliation", def: 0);
-    String description = map.getValueOrDefault(key: "description", def: "");
+    List<String> description = List.from(map.getValueOrDefault(key: "description", def: []));
 
     return ServiceEntity(
       name: name,
       pathName: pathImage,
       avaliation: avaliation,
-      description: description
+      description: description,
     );
   }
 }

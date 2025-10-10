@@ -25,6 +25,7 @@ import 'package:reparaai/features/search/domain/repositories/search_repository.d
 import 'package:reparaai/features/search/domain/usecases/impl/search_usecase_impl.dart';
 import 'package:reparaai/features/search/domain/usecases/search_usecase.dart';
 import 'package:reparaai/features/search/presentation/controllers/search_controller.dart';
+import 'package:reparaai/features/search/presentation/controllers/search_detail_controller.dart';
 import 'package:reparaai/features/signup/domain/usecases/impl/signup_usecase_impl.dart';
 import 'package:reparaai/features/signup/domain/usecases/signup_usecase.dart';
 import 'package:reparaai/features/signup/presentation/controllers/signup_controller.dart';
@@ -40,6 +41,7 @@ class Injection extends BaseInjection {
     register<SearchReparaiController>(() => SearchReparaiController(getIt()));
     register<ChooseDocumentWantSendController>(() => ChooseDocumentWantSendController());
     register<TakePhotoWithOpenDocumentController>(() => TakePhotoWithOpenDocumentController());
+    register<SearchDetailController>(() => SearchDetailController(getIt()));
   }
 
   @override

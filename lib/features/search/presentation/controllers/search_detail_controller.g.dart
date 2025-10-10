@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_controller.dart';
+part of 'search_detail_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'search_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$SearchReparaiController on _SearchReparaiController, Store {
+mixin _$SearchDetailController on _SearchDetailController, Store {
   late final _$servicesAtom = Atom(
-    name: '_SearchReparaiController.services',
+    name: '_SearchDetailController.services',
     context: context,
   );
 
@@ -27,30 +27,20 @@ mixin _$SearchReparaiController on _SearchReparaiController, Store {
     });
   }
 
-  late final _$_fetchServiceAsyncAction = AsyncAction(
-    '_SearchReparaiController._fetchService',
+  late final _$_SearchDetailControllerActionController = ActionController(
+    name: '_SearchDetailController',
     context: context,
   );
 
   @override
-  Future<void> _fetchService() {
-    return _$_fetchServiceAsyncAction.run(() => super._fetchService());
-  }
-
-  late final _$_SearchReparaiControllerActionController = ActionController(
-    name: '_SearchReparaiController',
-    context: context,
-  );
-
-  @override
-  void setServices(List<ServiceEntity> services) {
-    final _$actionInfo = _$_SearchReparaiControllerActionController.startAction(
-      name: '_SearchReparaiController.setServices',
+  void setArguments(SearchDetailsArguments arguments) {
+    final _$actionInfo = _$_SearchDetailControllerActionController.startAction(
+      name: '_SearchDetailController.setArguments',
     );
     try {
-      return super.setServices(services);
+      return super.setArguments(arguments);
     } finally {
-      _$_SearchReparaiControllerActionController.endAction(_$actionInfo);
+      _$_SearchDetailControllerActionController.endAction(_$actionInfo);
     }
   }
 

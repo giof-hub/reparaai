@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.controller});
 
   @override
-  _HomePageState createState() => _HomePageState(controller, true);
+  _HomePageState createState() => _HomePageState(controller, false);
 }
 
 class _HomePageState extends BasePageState<HomePage, HomeController> {

@@ -2,95 +2,88 @@ import 'package:flutter/material.dart';
 import 'package:reparaai/features/search/domain/entities/search_entity.dart';
 
 class SearchWorks extends StatelessWidget {
-  const SearchWorks({super.key, required this.entity});
+  final void Function() action;
 
-  final List<ServiceEntity> entity;
+  final ServiceEntity work;
+
+  const SearchWorks({super.key, required this.action, required this.work});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: entity.length,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        ServiceEntity work = entity[index];
-        return Card(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          elevation: 4,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Imagem
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: Image.asset(
-                  work.pathName,
-                  height: 160,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
+    return GestureDetector(
+      onTap: action,
+      child: Card(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 4,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Imagem
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12),
               ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          work.name,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    Row(
-                      children: [
-                        ...getReviews(work),
-                        Text("${work.avaliation}"),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      work.description,
-                      style: const TextStyle(color: Colors.black87),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(Icons.info_outline),
-                          label: const Text("Ver mais"),
-                        ),
-                        const SizedBox(width: 8),
-                        ElevatedButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(Icons.chat),
-                          label: const Text("Chat"),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              child: Image.asset(
+                work.pathName,
+                height: 160,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-              SizedBox(height: 16),
-            ],
-          ),
-        );
-      },
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        work.name,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Row(
+                    children: [...getReviews(work), Text("${work.avaliation}")],
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    work.description[0],
+                    style: const TextStyle(color: Colors.black87),
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.info_outline),
+                        label: const Text("Ver mais"),
+                      ),
+                      const SizedBox(width: 8),
+                      ElevatedButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.chat),
+                        label: const Text("Chat"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+          ],
+        ),
+      ),
     );
   }
 

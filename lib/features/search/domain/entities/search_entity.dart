@@ -2,7 +2,7 @@ class ServiceEntity {
   final String name;
   final String pathName;
   final num avaliation;
-  final String description;
+  final List<String> description;
 
   ServiceEntity({
     required this.name,

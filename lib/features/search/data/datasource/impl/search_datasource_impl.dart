@@ -21,9 +21,9 @@ class ServiceDatasourceImpl implements ServiceDatasource {
   List<dynamic> getMockListService() {
     String jsonString = '''
       [
-        {"name": "Conserto de Eletrodomésticos", "pathImage": "assets/eletrodomestico.png", "avaliation": 4.5, "description": "Reparos em todos os equipamentos residencial"},
-        {"name": "Chaveiro", "pathImage": "assets/chaveiro.png", "avaliation": 3.5, "description": "Arrumo/abro qualquer tipo de coisa"},
-        {"name": "mercenaria", "pathImage": "assets/mercenaria.png", "avaliation": 5, "description": "Faço qualquer tipo de moveis"}
+        {"name": "Conserto de Eletrodomésticos", "pathImage": "assets/eletrodomestico.png", "avaliation": 4.5, "description": ["Reparos em todos os equipamentos residencial", "TESTE"]},
+        {"name": "Chaveiro", "pathImage": "assets/chaveiro.png", "avaliation": 3.5, "description": ["Arrumo/abro qualquer tipo de coisa"]},
+        {"name": "mercenaria", "pathImage": "assets/mercenaria.png", "avaliation": 5, "description": ["Faço qualquer tipo de moveis"]}
       ]
     ''';
 
