@@ -9,7 +9,7 @@ class CategoryDatasourceImpl implements CategoryDatasource {
   Future<DataModel> listCategories() async {
     Map headers = {'Content-Type': 'application/json'};
 
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 5));
 
     List<dynamic> categories = await getMockListCategories();
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reparaai/core/presentation/pages/base_page_state.dart';
 import 'package:reparaai/core/presentation/widgets/appbar.dart';
+import 'package:reparaai/core/presentation/widgets/container_future_widget.dart';
 import 'package:reparaai/features/home/domain/entities/category_entity.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
@@ -19,7 +20,7 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.controller});
 
   @override
-  _HomePageState createState() => _HomePageState(controller, true);
+  _HomePageState createState() => _HomePageState(controller, false);
 }
 
 class _HomePageState extends BasePageState<HomePage, HomeController> {
@@ -51,24 +52,36 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
               children: [
                 cardHome(),
                 Padding(padding: EdgeInsets.only(top: 20)),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(padding: EdgeInsets.all(4)),
-                      ListView.builder(
-                        itemCount: 1,
-                        itemBuilder: (context, index) {
-                          CategoryEntity category = CategoryEntity.empty();
-                          return ServiceButton(
-                            icon: IconData(int.parse(category.icon), fontFamily: 'MaterialIcons'),
-                            label: category.label,
+                Observer(
+                  builder: (context) {
+                    return SizedBox(
+                      height: 121,
+                      child: ContainerFutureWidget(
+                        controller: controller,
+                        observer: controller.categoriesFuture,
+                        status: controller.categoriesFuture!.status,
+                        onResult: (result) {
+                          List<CategoryEntity> categories = result;
+                    
+                          return ListView.builder(
+                            itemCount: categories.length,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              CategoryEntity category = categories[index];
+                              return ServiceButton(
+                                icon: IconData(
+                                  int.parse(category.icon),
+                                  fontFamily: 'MaterialIcons',
+                                ),
+                                label: category.label,
+                              );
+                            },
                           );
                         },
                       ),
-                    ],
-                  ),
+                    );
+                  }
                 ),
                 SizedBox(height: 20),
                 Padding(
