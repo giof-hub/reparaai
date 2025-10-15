@@ -53,7 +53,6 @@ class _SearchDetailsPageState
             SearchDetailDescription(
               description: widget.arguments.serviceSelected!.description,
             ),
-
             // Profissionais disponíveis
             // Padding(
             //   padding: const EdgeInsets.symmetric(horizontal: 16),

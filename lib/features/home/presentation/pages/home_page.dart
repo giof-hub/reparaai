@@ -4,7 +4,6 @@ import 'package:reparaai/core/presentation/widgets/appbar.dart';
 import 'package:reparaai/features/home/domain/entities/category_entity.dart';
 import 'package:reparaai/features/home/presentation/controllers/home_controller.dart';
 import 'package:reparaai/features/home/presentation/widgets/card_button.dart';
-
 import 'package:reparaai/features/home/presentation/widgets/card_home.dart';
 import 'package:reparaai/features/home/presentation/widgets/navigator_bar.dart';
 import 'package:reparaai/features/home/presentation/widgets/service_button.dart';
@@ -57,16 +56,22 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(padding: EdgeInsets.all(4)),
-                      ListView.builder(
-                        itemCount: 1,
-                        itemBuilder: (context, index) {
-                          CategoryEntity category = CategoryEntity.empty();
-                          return ServiceButton(
-                            icon: IconData(int.parse(category.icon), fontFamily: 'MaterialIcons'),
-                            label: category.label,
-                          );
-                        },
-                      ),
+                      // Expanded(
+                      //   child: ListView.builder(
+                      //     itemCount: 1,
+                      //     shrinkWrap: true,
+                      //     itemBuilder: (context, index) {
+                      //       CategoryEntity category = CategoryEntity.empty();
+                      //       return ServiceButton(
+                      //         icon: IconData(
+                      //           int.parse(category.icon),
+                      //           fontFamily: 'MaterialIcons',
+                      //         ),
+                      //         label: category.label,
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
