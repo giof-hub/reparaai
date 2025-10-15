@@ -1,0 +1,75 @@
+import 'package:core/base_app.dart';
+import 'package:core/config/config_help.dart';
+import 'package:core/features/app/data/models/app_module.dart';
+import 'package:flutter/material.dart';
+import 'package:module_start/config/module_start_resolver.dart';
+
+class CoreAppWidget extends StatefulWidget {
+  final String initialRoute;
+  final dynamic initArgs;
+  final TransitionBuilder? builder;
+  final List<AppModule>? externalModules;
+  final Widget? widget;
+
+  const CoreAppWidget({
+    super.key,
+    this.initialRoute = '/',
+    this.initArgs,
+    this.externalModules,
+    this.builder,
+    this.widget,
+  });
+
+  @override
+  CoreAppWidgetState createState() => CoreAppWidgetState();
+}
+
+class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
+  @override
+  void initState() {
+    super.initState();
+    _startDependencyInjection();
+  }
+
+  void _startDependencyInjection() {
+    super.registerDependencyInject();
+    super.registerRoutes();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      navigatorKey: ConfigHelp.navegador,
+      restorationScopeId: "app",
+      debugShowCheckedModeBanner: false,
+      title: "ReparaAi",
+      home: widget.widget,
+      onGenerateRoute: (settings) =>
+          super.routeGenerator(settings, initArgs: widget.initArgs),
+      initialRoute: widget.initialRoute,
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: const Color.fromARGB(255, 32, 95, 168),
+          foregroundColor: Colors.white,
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0)
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide(color: Color.fromARGB(255, 32, 95, 168), width: 2)
+          ),
+        )
+      ),
+    );
+  }
+
+  @override
+  Map<String, widgetBuilderArgs> get baseRoutes => {};
+
+  @override
+  List<AppModule> get modules => [
+    ModuleStartResolver()
+  ];
+}
