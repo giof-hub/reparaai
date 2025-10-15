@@ -1,4 +1,6 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:module_design_system/gen/assets.dart';
 
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
@@ -90,9 +92,8 @@ Center cardHome() {
                   margin: EdgeInsets.all(4),
                   padding: EdgeInsets.all(0),
                   width: 101,
-                  child: Image.asset(
-                    'assets/woman_banner.png',
-                    fit: BoxFit.fill,
+                  child: Assets.images.womanBanner.toImage(
+                    fit: BoxFit.fill
                   ),
                 ),
               ],

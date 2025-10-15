@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:libraries/libraries.dart';
 import 'package:core/core.dart';
+import 'package:module_design_system/gen/assets.dart';
+import 'package:module_design_system/presentation/widget/reparaai_action_button.dart';
 import 'package:module_start/features/signup/domain/entities/signup_arguments.dart';
 import 'package:module_start/features/signup/presentation/controllers/take_photo_with_open_document_controller.dart';
 

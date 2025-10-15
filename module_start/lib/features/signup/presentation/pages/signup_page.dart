@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:libraries/libraries.dart';
 import 'package:core/features/app/presentation/pages/base_page_state.dart';
-import 'package:core/features/app/presentation/widgets/reparaai_action_button.dart';
-import 'package:core/features/app/presentation/widgets/reparaai_input_field.dart';
+import 'package:module_design_system/presentation/widget/reparaai_action_button.dart';
+import 'package:module_design_system/presentation/widget/reparaai_input_field.dart';
 import '../../domain/entities/enums/account_type_enum.dart';
 import '../../domain/entities/signup_arguments.dart';
 import '../controllers/signup_controller.dart';

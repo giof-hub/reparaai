@@ -20,5 +20,8 @@ export 'package:core/features/app/data/models/remote_data_source_model.dart';
 export 'package:core/features/app/data/models/data_model.dart';
 export 'package:core/extensions/map_extensions.dart';
 export 'package:core/extensions/string_extensions.dart';
+export 'package:core/extensions/images_extenstions.dart';
 export 'package:core/features/app/domain/entities/response_entity.dart';
 export 'package:core/features/app/domain/entities/enums/abstract_enum.dart';
+export 'package:core/config/base_injection.dart';
+export 'package:core/features/app/presentation/widgets/core_app_widget.dart';

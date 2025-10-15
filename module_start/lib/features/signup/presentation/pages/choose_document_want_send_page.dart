@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:libraries/libraries.dart';
-import 'package:core/features/app/domain/entities/enums/assets.dart';
 import 'package:core/extensions/string_extensions.dart';
 import 'package:core/features/app/presentation/pages/base_page_state.dart';
-import 'package:core/features/app/presentation/widgets/reparaai_action_button.dart';
+import 'package:module_design_system/gen/assets.dart';
+import 'package:module_design_system/presentation/widget/reparaai_action_button.dart';
 import '../../domain/entities/enums/document_type_enum.dart';
 import '../../domain/entities/signup_arguments.dart';
 import '../controllers/choose_document_want_send_controller.dart';

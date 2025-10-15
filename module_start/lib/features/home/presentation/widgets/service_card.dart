@@ -1,4 +1,6 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:module_design_system/gen/assets.dart';
 import '../../domain/entities/work_entity.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -40,7 +42,7 @@ class ServiceCard extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           image: DecorationImage(
-                            image: AssetImage(work.pathImage),
+                            image: AssetGenImage(work.pathImage).toImage().image,
                             fit: BoxFit.cover,
                           ),
                         ),

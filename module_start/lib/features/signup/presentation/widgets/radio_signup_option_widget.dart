@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:core/extensions/string_extensions.dart';
+import 'package:core/core.dart';
+import 'package:module_design_system/gen/assets.dart';
 import '../../domain/entities/enums/document_type_enum.dart';
 
 class RadioSignupOptionWidget extends StatelessWidget {
@@ -28,7 +29,7 @@ class RadioSignupOptionWidget extends StatelessWidget {
         value: value,
         title: Row(
           children: [
-            imagePath != null ? imagePath!.toImage(width: 40, height: 62) : SizedBox.shrink(),
+            imagePath != null ? AssetGenImage(imagePath!).toImage(width: 40, height: 62) : SizedBox.shrink(),
             SizedBox(width: 16),
             Text(description, 
               style: TextStyle(fontSize: 12)),

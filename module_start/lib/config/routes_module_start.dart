@@ -1,11 +1,11 @@
-import 'package:module_start/config/resolver.dart';
+import 'package:module_start/config/module_start_resolver.dart';
 import 'package:module_start/features/home/presentation/pages/home_page.dart';
 import 'package:module_start/features/login/presentation/pages/login_page.dart';
 import 'package:module_start/features/signup/presentation/pages/choose_document_want_send_page.dart';
 import 'package:module_start/features/signup/presentation/pages/signup_page.dart';
 import 'package:module_start/features/signup/presentation/pages/take_photo_with_open_document_page.dart';
 
-enum Routes {
+enum RoutesModuleStart {
   HOME(nameFeature: "home", nameRoute: HomePage.nameRoute, isPublic: true),
   SIGNUP(
     nameFeature: "signup",
@@ -21,18 +21,18 @@ enum Routes {
   final String nameRoute;
   final bool isPublic;
 
-  const Routes({
+  const RoutesModuleStart({
     required this.nameFeature,
     required this.nameRoute,
     required this.isPublic,
   });
 }
 
-extension RoutesExtensions on Routes {
+extension RoutesExtensions on RoutesModuleStart {
   String getPath({Map<String, String>? params}) {
     if (isPublic) {
       var uri = Uri(
-        path: "${Resolver.idModule}/$nameFeature/$nameRoute",
+        path: "${ModuleStartResolver.idModule}/$nameFeature/$nameRoute",
         queryParameters: params,
       );
 

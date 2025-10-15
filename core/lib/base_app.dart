@@ -20,6 +20,14 @@ abstract mixin class BaseApp {
     }
   }
 
+  void registerDependencyInject() {
+    if (modules.isNotEmpty) {
+      for (var module in modules) {
+        module.injectDependencies();
+      }
+    }
+  }
+
   Route<dynamic>? routeGenerator(RouteSettings config, {dynamic initArgs}) {
     var routeName = config.name;
     dynamic routeArgs;

@@ -2,6 +2,7 @@ import 'package:core/base_app.dart';
 import 'package:core/config/config_help.dart';
 import 'package:core/features/app/data/models/app_module.dart';
 import 'package:flutter/material.dart';
+import 'package:module_start/config/module_start_resolver.dart';
 
 class CoreAppWidget extends StatefulWidget {
   final String initialRoute;
@@ -27,10 +28,11 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
   @override
   void initState() {
     super.initState();
-    _startRoutesConfiguration();
+    _startDependencyInjection();
   }
 
-  void _startRoutesConfiguration() {
+  void _startDependencyInjection() {
+    super.registerDependencyInject();
     super.registerRoutes();
   }
 
@@ -67,5 +69,7 @@ class CoreAppWidgetState extends State<CoreAppWidget> with BaseApp {
   Map<String, widgetBuilderArgs> get baseRoutes => {};
 
   @override
-  List<AppModule> get modules => widget.externalModules ?? [];
+  List<AppModule> get modules => [
+    ModuleStartResolver()
+  ];
 }

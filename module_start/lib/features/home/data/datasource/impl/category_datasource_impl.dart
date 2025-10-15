@@ -20,8 +20,10 @@ class CategoryDatasourceImpl implements CategoryDatasource {
   }
 
   Future<List<dynamic>> getMockListCategories() async {
-    String categories = await rootBundle.loadString('assets/mocks/categories.json');
+    // String categories = await rootBundle.loadString('assets/mocks/categories.json');
 
-    return json.decode(categories);
+    // return json.decode(categories);
+
+    return [];
   }
 }

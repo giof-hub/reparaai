@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:core/domain/entities/enums/assets.dart';
 import 'package:core/extensions/string_extensions.dart';
+import 'package:module_design_system/gen/assets.dart';
 
 class LoadingCircularReparaaiWidget extends StatelessWidget {
   final Color? backgroundColor;

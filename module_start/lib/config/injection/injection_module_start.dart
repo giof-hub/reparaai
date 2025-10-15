@@ -1,5 +1,3 @@
-import 'package:module_start/config/injection/base_injection.dart';
-
 import 'package:core/core.dart';
 import 'package:module_start/features/home/data/datasource/category_datasource.dart';
 import 'package:module_start/features/home/data/datasource/impl/category_datasource_impl.dart';
@@ -23,7 +21,7 @@ import 'package:module_start/features/signup/presentation/controllers/signup_con
 import 'package:module_start/features/signup/presentation/controllers/choose_document_want_send_controller.dart';
 import 'package:module_start/features/signup/presentation/controllers/take_photo_with_open_document_controller.dart';
 
-class Injection extends BaseInjection {
+class InjectionModuleStart extends BaseInjection {
   @override
   void registerControllers() {
     register<LoginController>(() => LoginController(getIt()));

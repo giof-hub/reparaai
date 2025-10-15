@@ -6,16 +6,8 @@ extension StringExtensions on String {
   SvgPicture toSvg({ColorFilter? corFilter, Color? cor, double? width, double? height, BoxFit? fit}) {
     return SvgPicture.asset(
       this,
+      package: 'module_design_system',
       colorFilter: corFilter ?? (cor != null ? ui.ColorFilter.mode(cor, ui.BlendMode.srcIn) : null),
-      width: width,
-      height: height,
-      fit: fit ?? BoxFit.contain,
-    );
-  }
-
-  Image toImage({double? width, double? height, BoxFit? fit}) {
-    return Image.asset(
-      this,
       width: width,
       height: height,
       fit: fit ?? BoxFit.contain,
@@ -31,7 +23,7 @@ extension StringExtensions on String {
     BoxFit? fit,
   }) {
     return Lottie.asset(
-      AssetImage(this).keyName,
+      AssetImage(this, package: 'module_design_system').keyName,
       width: width,
       height: height,
       controller: controller,

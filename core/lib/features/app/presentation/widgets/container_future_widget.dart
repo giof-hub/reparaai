@@ -3,7 +3,7 @@ import 'package:libraries/libraries.dart';
 import 'package:core/features/app/data/models/response_app.dart';
 import 'package:core/features/app/domain/entities/enums/theme_message_user_enum.dart';
 import 'package:core/features/app/presentation/controllers/reparaai_page_controller.dart';
-import 'package:core/features/app/presentation/widgets/loading_circular_reparaai_widget.dart';
+import 'package:module_design_system/presentation/widget/loading_circular_reparaai_widget.dart';
 
 class ContainerFutureWidget extends StatelessWidget {
   final ObservableFuture<ResponseApp>? observer;

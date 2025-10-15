@@ -17,6 +17,9 @@ dependencies:
   libraries:
     path: '../libraries'
 
+  module_design_system:
+    path: '../module_design_system'
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
