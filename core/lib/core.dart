@@ -1,0 +1,24 @@
+library core;
+
+export 'package:core/features/app/presentation/controllers/reparaai_page_controller.dart';
+export 'package:core/features/app/data/models/response_app.dart';
+export 'package:core/features/app/presentation/widgets/container_future_widget.dart';
+export 'package:core/features/app/presentation/pages/base_page_state.dart';
+export 'package:core/features/app/presentation/widgets/appbar.dart';
+export 'package:core/config/config_help.dart';
+export 'package:core/features/app/data/models/app_module.dart';
+export 'package:core/features/app/data/repositories_impl/auth_repository_impl.dart';
+export 'package:core/features/app/data/repositories_impl/jwt_repository_impl.dart';
+export 'package:core/features/app/domain/repositories/auth_repository.dart';
+export 'package:core/features/app/domain/repositories/jwt_repository.dart';
+export 'package:core/features/app/domain/usecases/auth_usecase.dart';
+export 'package:core/features/app/domain/usecases/impl/auth_usecase_impl.dart';
+export 'package:core/features/app/domain/usecases/impl/menu_usecase_impl.dart';
+export 'package:core/features/app/domain/usecases/menu_usecase.dart';
+export 'package:core/features/app/domain/entities/auth_entity.dart';
+export 'package:core/features/app/data/models/remote_data_source_model.dart';
+export 'package:core/features/app/data/models/data_model.dart';
+export 'package:core/extensions/map_extensions.dart';
+export 'package:core/extensions/string_extensions.dart';
+export 'package:core/features/app/domain/entities/response_entity.dart';
+export 'package:core/features/app/domain/entities/enums/abstract_enum.dart';

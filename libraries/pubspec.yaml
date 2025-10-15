@@ -1,0 +1,31 @@
+name: libraries
+description: "A new Flutter package project."
+version: 0.0.1
+homepage:
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  get_it: ^8.2.0
+  mobx: ^2.5.0
+  flutter_mobx: ^2.3.0
+  flutter_secure_storage: ^9.2.4
+  jwt_decode: ^0.3.1
+  flutter_svg: ^2.2.1
+  lottie: ^3.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.7.0
+  mobx_codegen: ^2.7.2
+
+flutter:
+  uses-material-design: true

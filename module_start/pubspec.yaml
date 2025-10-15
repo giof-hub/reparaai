@@ -1,29 +1,28 @@
-name: reparaai
-description: "A new Flutter project."
+name: module_start
+description: "A new Flutter package project."
+version: 0.0.1
+homepage:
 publish_to: 'none'
-version: 1.0.0+1
 
 environment:
   sdk: ^3.9.0
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
   core:
-    path: './core'
+    path: '../core'
   
   libraries:
-    path: './libraries'
+    path: '../libraries'
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^6.0.0
   build_runner: ^2.7.0
   mobx_codegen: ^2.7.2
 
 flutter:
-
   uses-material-design: true
