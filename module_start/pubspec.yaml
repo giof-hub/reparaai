@@ -26,6 +26,16 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   build_runner: ^2.7.0
   mobx_codegen: ^2.7.2
+  flutter_localizations:
+    sdk: flutter
 
 flutter:
   uses-material-design: true
+
+flutter_intl:
+  enabled: true
+  arb_dir: lib/internationalization
+  output_dir: lib/internationalization/generated
+  class_name: ModuleStartLocalizations
+  synthetic-package: false
+  main_locale: pt_BR

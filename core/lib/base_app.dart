@@ -1,4 +1,6 @@
 import 'package:core/core.dart';
+import 'package:core/internationalization/intl_app.dart';
+import 'package:core/internationalization/intl_delegate.dart';
 import 'package:flutter/widgets.dart';
 
 abstract mixin class BaseApp {
@@ -26,6 +28,44 @@ abstract mixin class BaseApp {
         module.injectDependencies();
       }
     }
+  }
+
+  void initIntl() {
+    IntlApp();
+
+    if (modules.isNotEmpty) {
+      for (var module in modules) {
+        module.initializate();
+      }
+    }
+  }
+
+  List<LocalizationsDelegate<dynamic>> internationalizationDelegate() {
+    List<LocalizationsDelegate<dynamic>> list = [];
+
+    list.add(IntlApp.delegate);
+    if (modules.isNotEmpty) {
+      modules.forEach((module) {
+        if (module.internationalizationDelegate != null) {
+          list.add(module.internationalizationDelegate!);
+        }
+      });
+    }
+    return list;
+  }
+
+  Set<Locale> supportLocaleModule() {
+    Set<Locale> list = {};
+
+    list.addAll(IntlDelegate.supportedLocales);
+    if (modules.isNotEmpty) {
+      for (var module in modules) {
+        if (module.supportLanguages != null) {
+          list.addAll(module.supportLanguages!);
+        }
+      }
+    }
+    return list;
   }
 
   Route<dynamic>? routeGenerator(RouteSettings config, {dynamic initArgs}) {

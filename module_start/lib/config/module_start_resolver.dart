@@ -14,6 +14,8 @@ import 'package:module_start/features/signup/presentation/controllers/take_photo
 import 'package:module_start/features/signup/presentation/pages/choose_document_want_send_page.dart';
 import 'package:module_start/features/signup/presentation/pages/signup_page.dart';
 import 'package:module_start/features/signup/presentation/pages/take_photo_with_open_document_page.dart';
+import 'package:module_start/internationalization/intl_app.dart';
+import 'package:module_start/internationalization/intl_delegate.dart';
 
 class ModuleStartResolver implements AppModule {
   static const String idModule = 'module_start';
@@ -24,7 +26,9 @@ class ModuleStartResolver implements AppModule {
   };
 
   @override
-  void initializate() {}
+  void initializate() {
+    IntlApp();
+  }
 
   @override
   void Function() get injectDependencies => InjectionModuleStart().init;
@@ -53,5 +57,8 @@ class ModuleStartResolver implements AppModule {
   };
 
   @override
-  List<Locale>? get supportLanguages => throw UnimplementedError();
+  List<Locale>? get supportLanguages => IntlDelegate.supportedLocales;
+  
+  @override
+  LocalizationsDelegate? get internationalizationDelegate => IntlApp.delegate;
 }

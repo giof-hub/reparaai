@@ -15,5 +15,7 @@ abstract class AppModule {
 
   List<Locale>? get supportLanguages;
 
+  LocalizationsDelegate<dynamic>? get internationalizationDelegate;
+
   void initializate();
 }
