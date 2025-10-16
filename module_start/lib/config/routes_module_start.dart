@@ -1,6 +1,8 @@
 import 'package:module_start/config/module_start_resolver.dart';
 import 'package:module_start/features/home/presentation/pages/home_page.dart';
 import 'package:module_start/features/login/presentation/pages/login_page.dart';
+import 'package:module_start/features/search/presentation/pages/search_details_page.dart';
+import 'package:module_start/features/search/presentation/pages/search_page.dart';
 import 'package:module_start/features/signup/presentation/pages/choose_document_want_send_page.dart';
 import 'package:module_start/features/signup/presentation/pages/signup_page.dart';
 import 'package:module_start/features/signup/presentation/pages/take_photo_with_open_document_page.dart';
@@ -13,9 +15,26 @@ enum RoutesModuleStart {
     isPublic: true,
   ),
   LOGIN(nameFeature: "login", nameRoute: LoginPage.nameRoute, isPublic: true),
-  CHOOSE_DOCUMENT_WANT_SEND(nameFeature: "signup", nameRoute: ChooseDocumentWantSendPage.nameRoute, isPublic: true),
-  TAKE_PHOTO_WITH_OPEN_DOCUMENT(nameFeature: "signup", nameRoute: TakePhotoWithOpenDocumentPage.nameRoute, isPublic: true),
-  ;
+  CHOOSE_DOCUMENT_WANT_SEND(
+    nameFeature: "signup",
+    nameRoute: ChooseDocumentWantSendPage.nameRoute,
+    isPublic: true,
+  ),
+  TAKE_PHOTO_WITH_OPEN_DOCUMENT(
+    nameFeature: "signup",
+    nameRoute: TakePhotoWithOpenDocumentPage.nameRoute,
+    isPublic: true,
+  ),
+  SEARCH(
+    nameFeature: "search",
+    nameRoute: SearchPage.nameRoute,
+    isPublic: true,
+  ),
+  SEARCH_DETAILS(
+    nameFeature: "search",
+    nameRoute: SearchDetailsPage.nameRoute,
+    isPublic: true,
+  );
 
   final String nameFeature;
   final String nameRoute;

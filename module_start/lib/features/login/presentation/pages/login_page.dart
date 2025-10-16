@@ -1,8 +1,9 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:core/features/app/presentation/pages/base_page_state.dart';
+import 'package:module_design_system/gen/assets.dart';
 import 'package:module_design_system/presentation/widget/button_field.dart';
 import '../controllers/login_controller.dart';
-import '../widgets/login_button_field.dart';
+import '../widgets/login_button_field_widget.dart';
 
 class LoginPage extends StatefulWidget {
   static const String nameRoute = "login";
@@ -34,7 +35,8 @@ class _LoginPageState extends BasePageState<LoginPage, LoginController> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset('assets/logo.png', width: 158, height: 164),
+                      // Image.asset('assets/logo.png', width: 158, height: 164),
+                      AssetGenImage('assets/logo.png').toImage(width: 158, height: 164),
                       const SizedBox(height: 40),
                       LoginButtonField(
                         isPassword: false,

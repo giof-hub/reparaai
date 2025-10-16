@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:libraries/libraries.dart';
 import 'package:module_start/config/injection/injection_module_start.dart';
@@ -7,6 +8,11 @@ import 'package:module_start/features/home/presentation/controllers/home_control
 import 'package:module_start/features/home/presentation/pages/home_page.dart';
 import 'package:module_start/features/login/presentation/controllers/login_controller.dart';
 import 'package:module_start/features/login/presentation/pages/login_page.dart';
+import 'package:module_start/features/search/domain/entities/search_details_arguments.dart';
+import 'package:module_start/features/search/presentation/controllers/search_controller.dart';
+import 'package:module_start/features/search/presentation/controllers/search_detail_controller.dart';
+import 'package:module_start/features/search/presentation/pages/search_details_page.dart';
+import 'package:module_start/features/search/presentation/pages/search_page.dart';
 import 'package:module_start/features/signup/domain/entities/signup_arguments.dart';
 import 'package:module_start/features/signup/presentation/controllers/signup_controller.dart';
 import 'package:module_start/features/signup/presentation/controllers/choose_document_want_send_controller.dart';
@@ -50,6 +56,10 @@ class ModuleStartResolver implements AppModule {
           args: args != null ? args as SignupArguments : null),
     RoutesModuleStart.LOGIN.getPath(): (context, args) =>
         LoginPage(controller: GetIt.I.get<LoginController>()),
+    RoutesModuleStart.SEARCH.getPath(): (context, args) =>
+        SearchPage(controller: GetIt.I.get<SearchReparaiController>()),
+    RoutesModuleStart.SEARCH_DETAILS.getPath(): (context, args) =>
+        SearchDetailsPage(controller: GetIt.I.get<SearchDetailController>(), arguments: args as SearchDetailsArguments,),
   };
 
   @override

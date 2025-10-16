@@ -15,6 +15,14 @@ import 'package:module_start/features/home/presentation/controllers/home_control
 import 'package:module_start/features/login/domain/usecases/impl/login_usecase_impl.dart';
 import 'package:module_start/features/login/domain/usecases/login_usecase.dart';
 import 'package:module_start/features/login/presentation/controllers/login_controller.dart';
+import 'package:module_start/features/search/data/datasource/impl/search_datasource_impl.dart';
+import 'package:module_start/features/search/data/datasource/search_datasource.dart';
+import 'package:module_start/features/search/domain/repositories/impl/search_repository_impl.dart';
+import 'package:module_start/features/search/domain/repositories/search_repository.dart';
+import 'package:module_start/features/search/domain/usecases/impl/search_usecase_impl.dart';
+import 'package:module_start/features/search/domain/usecases/search_usecase.dart';
+import 'package:module_start/features/search/presentation/controllers/search_controller.dart';
+import 'package:module_start/features/search/presentation/controllers/search_detail_controller.dart';
 import 'package:module_start/features/signup/domain/usecases/impl/signup_usecase_impl.dart';
 import 'package:module_start/features/signup/domain/usecases/signup_usecase.dart';
 import 'package:module_start/features/signup/presentation/controllers/signup_controller.dart';
@@ -27,16 +35,21 @@ class InjectionModuleStart extends BaseInjection {
     register<LoginController>(() => LoginController(getIt()));
     register<SignupController>(() => SignupController(getIt()));
     register<HomeController>(() => HomeController(getIt(), getIt()));
-    register<ChooseDocumentWantSendController>(() => ChooseDocumentWantSendController());
-    register<TakePhotoWithOpenDocumentController>(() => TakePhotoWithOpenDocumentController());
+    register<SearchReparaiController>(() => SearchReparaiController(getIt()));
+    register<SearchDetailController>(() => SearchDetailController(getIt()));
+    register<ChooseDocumentWantSendController>(
+      () => ChooseDocumentWantSendController(),
+    );
+    register<TakePhotoWithOpenDocumentController>(
+      () => TakePhotoWithOpenDocumentController(),
+    );
   }
 
   @override
   void registerDataSources() {
-
     register<WorkDatasource>(() => WorkDatasourceImpl());
     register<CategoryDatasource>(() => CategoryDatasourceImpl());
-
+    register<SearchDatasource>(() => SearchDatasourceImpl());
   }
 
   @override
@@ -48,6 +61,7 @@ class InjectionModuleStart extends BaseInjection {
     register<AuthRepository>(() => AuthRepositoryImpl(getIt()));
     register<WorkRepository>(() => WorkRepositoryImpl(getIt()));
     register<CategoryRepository>(() => CategoryRepositoryImpl(getIt()));
+    register<SearchRepository>(() => SearchRepositoryImpl(getIt()));
   }
 
   @override
@@ -61,5 +75,6 @@ class InjectionModuleStart extends BaseInjection {
     register<MenuUseCase>(() => MenuUsecaseImpl());
     register<WorkUseCase>(() => WorkUsecaseImpl(getIt()));
     register<CategoryUsecase>(() => CategoryUsecaseImpl(getIt()));
+    register<SearchUseCase>(() => SearchUsecaseImpl(getIt()));
   }
 }
