@@ -25,5 +25,11 @@ dev_dependencies:
   mobx_codegen: ^2.7.2
 
 flutter:
-
   uses-material-design: true
+
+flutter_intl:
+  enabled: true
+  arb_dir: lib/internationalization
+  output_dir: lib/internationalization/generated
+  synthetic-package: false
+  main_locale: pt_BR

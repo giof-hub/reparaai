@@ -7,3 +7,5 @@ export 'package:flutter_mobx/flutter_mobx.dart' show Observer;
 export 'package:mobx/mobx.dart';
 export 'package:flutter_secure_storage/flutter_secure_storage.dart';
 export 'package:jwt_decode/jwt_decode.dart';
+export 'package:intl/intl.dart';
+export 'package:flutter_localizations/flutter_localizations.dart';
