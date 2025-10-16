@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:module_start/internationalization/intl_app.dart';
 
 class CardButton extends StatelessWidget {
   final void Function() action;
@@ -21,11 +22,11 @@ class CardButton extends StatelessWidget {
                   bottomLeft: Radius.circular(12),
                 ),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Acesse agora',
+                    IntlApp.current.label_acesse_agora,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
