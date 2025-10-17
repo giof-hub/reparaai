@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:core/core.dart';
 import 'package:libraries/libraries.dart';
+import 'package:module_start/features/home/presentation/widgets/card_home.dart';
+import 'package:module_start/internationalization/intl_app.dart';
 import '../../domain/entities/category_entity.dart';
 import '../controllers/home_controller.dart';
-import '../widgets/card_button.dart';
+import '../widgets/acesse_agora_widget.dart';
 
-import '../widgets/card_home.dart';
 import '../widgets/navigator_bar.dart';
 import '../widgets/service_button.dart';
 import '../widgets/service_card.dart';
@@ -34,8 +35,8 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
 
   @override
   void dispose() {
-    _searchController.dispose();
     super.dispose();
+    _searchController.dispose();
   }
 
   @override
@@ -48,7 +49,9 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                cardHome(),
+                CardHome(
+                  description: IntlApp.current.label_descricao_card_home_construa_confianca,
+                ),
                 Padding(padding: EdgeInsets.only(top: 20)),
                 Observer(
                   builder: (context) {
@@ -79,9 +82,12 @@ class _HomePageState extends BasePageState<HomePage, HomeController> {
                   },
                 ),
                 SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: CardButton(action: () => controller.signIn()),
+                GestureDetector(
+                  onTap: () => controller.signIn(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: AcesseAgoraWidget(),
+                  ),
                 ),
                 Observer(
                   builder: (context) {
