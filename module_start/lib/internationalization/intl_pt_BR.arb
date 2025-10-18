@@ -1,4 +1,10 @@
 {
     "@@locale": "pt_BR",
-    "label_acesse_agora": "Acesse agora"
+    "label_acesse_agora": "Acesse agora",
+    "label_aproveite_beneficio": "Aproveite todos os benefícios onde onde você estiver.",
+    "label_ver_planos": "Ver planos",
+    "label_ver_mais_informacoes" : "Ver mais informações",
+    "label_ver_mais" : "Ver mais",
+    "label_chat": "Chat",
+    "label_garantia_da_reparai": "Garantia da Reparai"
 }

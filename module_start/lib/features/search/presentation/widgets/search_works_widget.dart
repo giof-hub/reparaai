@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:module_design_system/gen/assets.dart';
 import 'package:module_start/features/search/domain/entities/search_entity.dart';
+import 'package:module_start/internationalization/intl_app.dart';
 class SearchWorks extends StatelessWidget {
 
   final SearchEntity work;
@@ -55,14 +56,14 @@ class SearchWorks extends StatelessWidget {
                   children: [
                     TextButton.icon(
                       onPressed: () {},
-                      icon: const Icon(Icons.info_outline),
-                      label: const Text("Ver mais"),
+                      icon: Icon(Icons.info_outline),
+                      label: Text(IntlApp.current.label_ver_mais),
                     ),
                     const SizedBox(width: 8),
                     ElevatedButton.icon(
                       onPressed: () {},
-                      icon: const Icon(Icons.chat),
-                      label: const Text("Chat"),
+                      icon: Icon(Icons.chat),
+                      label: Text(IntlApp.current.label_chat),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                       ),

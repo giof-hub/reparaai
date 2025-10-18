@@ -60,6 +60,66 @@ class ModuleStartLocalizations {
       args: [],
     );
   }
+
+  /// `Aproveite todos os benefícios onde onde você estiver.`
+  String get label_aproveite_beneficio {
+    return Intl.message(
+      'Aproveite todos os benefícios onde onde você estiver.',
+      name: 'label_aproveite_beneficio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ver planos`
+  String get label_ver_planos {
+    return Intl.message(
+      'Ver planos',
+      name: 'label_ver_planos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ver mais informações`
+  String get label_ver_mais_informacoes {
+    return Intl.message(
+      'Ver mais informações',
+      name: 'label_ver_mais_informacoes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ver mais`
+  String get label_ver_mais {
+    return Intl.message(
+      'Ver mais',
+      name: 'label_ver_mais',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat`
+  String get label_chat {
+    return Intl.message(
+      'Chat',
+      name: 'label_chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Garantia da Reparai`
+  String get label_garantia_da_reparai {
+    return Intl.message(
+      'Garantia da Reparai',
+      name: 'label_garantia_da_reparai',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

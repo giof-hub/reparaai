@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:module_design_system/gen/assets.dart';
+import 'package:module_start/internationalization/intl_app.dart';
 
 class SearchDetailCard extends StatelessWidget {
   final String pathName;
@@ -43,8 +44,8 @@ class SearchDetailCard extends StatelessWidget {
                       color: Colors.blue.shade100,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Text(
-                      'Garantia da Reparai',
+                    child: Text(
+                      IntlApp.current.label_garantia_da_reparai,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -61,7 +62,7 @@ class SearchDetailCard extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {},
-                      child: const Text("Ver mais informações"),
+                      child: Text(IntlApp.current.label_ver_mais_informacoes),
                     ),
                   ),
                 ],

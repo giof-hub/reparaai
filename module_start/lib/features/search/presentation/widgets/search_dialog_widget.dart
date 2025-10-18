@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchBottom extends StatelessWidget {
-  const SearchBottom({super.key});
+class SearchDialogWidget extends StatelessWidget {
+  const SearchDialogWidget({super.key});
 
   @override 
   Widget build(BuildContext context) {

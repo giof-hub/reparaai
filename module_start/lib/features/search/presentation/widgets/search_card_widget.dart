@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:module_design_system/gen/assets.dart';
+import 'package:module_start/internationalization/intl_app.dart';
 
 class CardSearch extends StatelessWidget {
 
@@ -25,7 +26,7 @@ class CardSearch extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Aproveite todos os benefícios onde onde você estiver.',
+                  IntlApp.current.label_aproveite_beneficio,
                   style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 SizedBox(height: 10),
@@ -40,7 +41,7 @@ class CardSearch extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text('Ver planos'),
+                  child: Text(IntlApp.current.label_ver_planos),
                 ),
               ],
             ),

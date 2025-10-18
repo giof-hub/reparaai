@@ -2,17 +2,12 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:module_design_system/gen/assets.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class CardHome extends StatelessWidget {
+  const CardHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: cardHome());
-  }
-}
-
-Center cardHome() {
-  return Center(
+    return Center(
     child: Container(
       width: 380,
       height: 200,
@@ -50,7 +45,6 @@ Center cardHome() {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          // Botão Proteção
                           ElevatedButton.icon(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
@@ -103,4 +97,5 @@ Center cardHome() {
       ),
     ),
   );
+  }
 }
