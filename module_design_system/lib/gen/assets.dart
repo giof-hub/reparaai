@@ -29,6 +29,7 @@ class $AssetsAnimationsGen {
   const $AssetsAnimationsGen();
 
   String get loadingReparaai => 'assets/animations/loading_reparaai.json';
+  String get dots => 'assets/animations/dots.json';
 }
 
 class AssetGenImage {

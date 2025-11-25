@@ -2,8 +2,8 @@ import 'package:core/extensions/string_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:module_design_system/gen/assets.dart';
 
-class SearchDialogWidget extends StatelessWidget {
-  const SearchDialogWidget({super.key});
+class SearchDialogSearchingWidget extends StatelessWidget {
+  const SearchDialogSearchingWidget({super.key});
 
   @override 
   Widget build(BuildContext context) {
