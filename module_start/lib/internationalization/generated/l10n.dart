@@ -60,6 +60,26 @@ class ModuleStartLocalizations {
       args: [],
     );
   }
+
+  /// `Construa confiança e economize tempo com a nossa plataforma.`
+  String get label_descricao_card_home_construa_confianca {
+    return Intl.message(
+      'Construa confiança e economize tempo com a nossa plataforma.',
+      name: 'label_descricao_card_home_construa_confianca',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proteção em ação`
+  String get label_protecao_acao {
+    return Intl.message(
+      'Proteção em ação',
+      name: 'label_protecao_acao',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate
